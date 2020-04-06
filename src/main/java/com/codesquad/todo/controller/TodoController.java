@@ -4,6 +4,7 @@ import com.codesquad.todo.bean.ApiResponse;
 import com.codesquad.todo.message.SuccessMessages;
 import com.codesquad.todo.repository.Note;
 import com.codesquad.todo.repository.NoteRepository;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,7 @@ public class TodoController {
   @Autowired
   NoteRepository noteRepository;
 
+  @ApiOperation(value = "", notes = "Get JWT token")
   @GetMapping("/login")
   public ResponseEntity<ApiResponse> login() {
     Map<String, Object> response = new HashMap<>();
@@ -35,6 +37,7 @@ public class TodoController {
     return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, response), HttpStatus.OK);
   }
 
+  @ApiOperation(value = "", notes = "Get All notes")
   @GetMapping("/notes")
   public ResponseEntity<ApiResponse> notes() {
     Map<String, Object> response = new HashMap<>();

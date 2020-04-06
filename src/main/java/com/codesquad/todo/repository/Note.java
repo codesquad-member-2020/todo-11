@@ -13,9 +13,9 @@ public class Note {
   @Id
   private Long id;
 
-  private String COLUMN_NAME;
-  private String CONTENTS;
-  private LocalDateTime CREATED_AT;
-  private LocalDateTime UPDATED_AT;
-  private String WRITER;
+  private String columnName;
+  private String content;
+  private LocalDateTime createdAt;
+  private LocalDateTime updatedAt;
+  private String writer;
 }
