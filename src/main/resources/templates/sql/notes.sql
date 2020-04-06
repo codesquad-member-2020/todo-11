@@ -1,53 +1,66 @@
-CREATE TABLE NOTES
+drop table note;
+
+create table note
 (
-    ID          INT           NOT NULL AUTO_INCREMENT,
-    COLUMN_NAME VARCHAR(100)  NOT NULL,
-    CONTENTS    VARCHAR(1000) NOT NULL,
-    CREATED_AT  TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    UPDATED_AT  TIMESTAMP     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    WRITER      VARCHAR(32)   NOT NULL,
-    PRIMARY KEY (ID)
+    id          int           not null auto_increment,
+    column_name varchar(100)  not null,
+    contents    varchar(1000) not null,
+    created_at  timestamp     not null default current_timestamp,
+    updated_at  timestamp     not null default current_timestamp on update current_timestamp,
+    writer      varchar(32)   not null,
+    primary key (id)
 );
 
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('해야할일', 'DAN 이 해야할 일 1', 'DAN');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('해야할일', 'DAN 이 해야할 일 2', 'DAN');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('해야할일', 'DAN 이 해야할 일 3', 'DAN');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('해야할일', '미슈가 해야할 일 4', '미슈');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('해야할일', '미슈가 해야할 일 5', '미슈');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('해야할일', '미슈가 해야할 일 6', '미슈');
+insert into note(column_name, contents, writer)
+values ('해야할일', 'dan 이 해야할 일 2', 'dan');
+insert into note(column_name, contents, writer)
+values ('해야할일', 'dan 이 해야할 일 1', 'dan');
+insert into note(column_name, contents, writer)
+values ('해야할일', 'dan 이 해야할 일 3', 'dan');
+insert into note(column_name, contents, writer)
+values ('해야할일', '미슈가 해야할 일 4', '미슈');
+insert into note(column_name, contents, writer)
+values ('해야할일', '미슈가 해야할 일 5', '미슈');
+insert into note(column_name, contents, writer)
+values ('해야할일', '미슈가 해야할 일 6', '미슈');
 
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('하는중', 'DAN 이 하는중 1', 'DAN');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('하는중', 'DAN 이 하는중 2', 'DAN');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('하는중', 'DAN 이 하는중 3', 'DAN');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('하는중', '미슈가 하는중 4', '미슈');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('하는중', '미슈가 하는중 5', '미슈');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('하는중', '미슈가 하는중 6', '미슈');
+insert into note(column_name, contents, writer)
+values ('하는중', 'dan 이 하는중 1', 'dan');
+insert into note(column_name, contents, writer)
+values ('하는중', 'dan 이 하는중 2', 'dan');
+insert into note(column_name, contents, writer)
+values ('하는중', 'dan 이 하는중 3', 'dan');
+insert into note(column_name, contents, writer)
+values ('하는중', '미슈가 하는중 4', '미슈');
+insert into note(column_name, contents, writer)
+values ('하는중', '미슈가 하는중 5', '미슈');
+insert into note(column_name, contents, writer)
+values ('하는중', '미슈가 하는중 6', '미슈');
 
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('다했어', 'SALLY 가 다했어 1', 'SALLY');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('다했어', 'SALLY 가 다했어 2', 'SALLY');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('다했어', 'SALLY 가 다했어 3', 'SALLY');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('다했어', 'JINIE 가 다했어 4', 'JINIE');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('다했어', 'JINIE 가 다했어 5', 'JINIE');
-INSERT INTO NOTES(COLUMN_NAME, CONTENTS, WRITER)
-VALUES ('다했어', 'JINIE 가 다했어 6', 'JINIE');
+insert into note(column_name, contents, writer)
+values ('다했어', 'sally 가 다했어 1', 'sally');
+insert into note(column_name, contents, writer)
+values ('다했어', 'sally 가 다했어 2', 'sally');
+insert into note(column_name, contents, writer)
+values ('다했어', 'sally 가 다했어 3', 'sally');
+insert into note(column_name, contents, writer)
+values ('다했어', 'jinie 가 다했어 4', 'jinie');
+insert into note(column_name, contents, writer)
+values ('다했어', 'jinie 가 다했어 5', 'jinie');
+insert into note(column_name, contents, writer)
+values ('다했어', 'jinie 가 다했어 6', 'jinie');
 
-SELECT * FROM NOTES;
+select *
+from note;
 
-COMMIT;
+
+select id, column_name, contents, created_at, updated_at, writer
+from note;
+
+commit;
+
+
+
+
+select note.id as id, note.writer as writer, note.contents as contents, note.updated_at as updated_at, note.created_at as created_at, note.column_name as column_name from note;
+
