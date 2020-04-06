@@ -114,6 +114,7 @@ build/
 !**/src/test/**
 /logs/
 /testResults/
+.idea/dataSources.xml
 
 ### STS ###
 .apt_generated
