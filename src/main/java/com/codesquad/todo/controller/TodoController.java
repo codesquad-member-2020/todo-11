@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -34,7 +35,7 @@ public class TodoController {
     return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, response), HttpStatus.OK);
   }
 
-  @ApiOperation(value = "", notes = "Get All notes", tags = "Mockup")
+  @ApiOperation(value = "", notes = "Get all notes", tags = "Mockup")
   @GetMapping("/notes")
   public ResponseEntity<ApiResponse> notes() {
     Map<String, Object> response = new HashMap<>();
@@ -43,7 +44,16 @@ public class TodoController {
     return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, response), HttpStatus.OK);
   }
 
-  @ApiOperation(value = "", notes = "Get All columns", tags = "Dev")
+  @ApiOperation(value = "", notes = "Get all notes about specific column", tags = "Dev")
+  @GetMapping("/notes/column")
+  public ResponseEntity<ApiResponse> specificColumnNotes(@RequestParam String columnName) {
+    Map<String, Object> response = new HashMap<>();
+    response.put("notes", noteRepository.findAllByColumnName(columnName));
+
+    return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, response), HttpStatus.OK);
+  }
+
+  @ApiOperation(value = "", notes = "Get all columns", tags = "Dev")
   @GetMapping("/columns")
   public ResponseEntity<ApiResponse> columns() {
     Map<String, Object> response = new HashMap<>();
