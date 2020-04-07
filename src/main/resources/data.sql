@@ -1,17 +1,3 @@
-drop table note;
-
-create table note
-(
-    id          int           not null auto_increment,
-    column_name varchar(100)  not null,
-    content     varchar(1000) not null,
-    created_at  timestamp     not null default current_timestamp,
-    updated_at  timestamp     not null default current_timestamp on update current_timestamp,
-    writer      varchar(32)   not null,
-    is_deleted  boolean       not null default false,
-    primary key (id)
-);
-
 insert into note(column_name, content, writer)
 values ('해야할일', 'dan 이 해야할 일 1', 'dan');
 insert into note(column_name, content, writer)
@@ -50,18 +36,3 @@ insert into note(column_name, content, writer)
 values ('다했어', 'jinie 가 다했어 5', 'jinie');
 insert into note(column_name, content, writer)
 values ('다했어', 'jinie 가 다했어 6', 'jinie');
-
-select *
-from note;
-
-select note.id, note.column_name, note.content, note.created_at, note.updated_at, note.writer, note.is_deleted
-from note;
-
-select distinct note.column_name
-from note;
-
-select note.id, note.column_name, note.content, note.created_at, note.updated_at, note.writer, note.is_deleted
-from note
-where column_name = '다했어';
-
-commit;
