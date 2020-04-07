@@ -28,7 +28,7 @@ public class SwaggerConfig {
         .groupName("Api")
         .select()
         .apis(RequestHandlerSelectors.any())
-        .paths(PathSelectors.ant("/api/*"))
+        .paths(PathSelectors.ant("/api/**"))
         .build()
         .apiInfo(metadata());
   }

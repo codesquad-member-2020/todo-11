@@ -1,4 +1,4 @@
-package com.codesquad.todo.repository;
+package com.codesquad.todo.bean;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -18,4 +18,9 @@ public class Note {
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
   private String writer;
+  private boolean isDeleted;
+
+  public void delete(){
+    isDeleted = true;
+  }
 }
