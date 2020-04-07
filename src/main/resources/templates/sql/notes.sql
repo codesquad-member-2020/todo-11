@@ -53,8 +53,9 @@ values ('다했어', 'jinie 가 다했어 6', 'jinie');
 select *
 from note;
 
-
 select id, column_name, content, created_at, updated_at, writer
 from note;
+
+select distinct note.column_name from note;
 
 commit;
