@@ -1,6 +1,7 @@
 package com.codesquad.todo.controller;
 
 import com.codesquad.todo.bean.ApiResponse;
+import com.codesquad.todo.bean.Note;
 import com.codesquad.todo.message.SuccessMessages;
 import com.codesquad.todo.repository.NoteRepository;
 import io.swagger.annotations.ApiOperation;
@@ -9,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +56,15 @@ public class TodoController {
   public ResponseEntity<ApiResponse> columns() {
     Map<String, Object> response = new HashMap<>();
     response.put("columns", noteRepository.findDistinctByColumnName());
+
+    return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, response), HttpStatus.OK);
+  }
+
+  @ApiOperation(value = "", notes = "Create note", tags = "Dev")
+  @PostMapping("/note")
+  public ResponseEntity<ApiResponse> note(@RequestBody Note note) {
+    Map<String, Object> response = new HashMap<>();
+    response.put("note", noteRepository.save(note));
 
     return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, response), HttpStatus.OK);
   }
