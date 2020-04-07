@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -67,5 +68,16 @@ public class TodoController {
     response.put("note", noteRepository.save(note));
 
     return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, response), HttpStatus.OK);
+  }
+
+  @ApiOperation(value = "", notes = "Soft delete note", tags = "Dev")
+  @DeleteMapping("/note")
+  public ResponseEntity<ApiResponse> specificColumnNotes(@RequestParam Long id) {
+    Optional<Note> noteOptional = noteRepository.findById(id);
+    Note note = noteOptional.get();
+    note.delete();
+    noteRepository.save(note);
+
+    return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, null), HttpStatus.OK);
   }
 }

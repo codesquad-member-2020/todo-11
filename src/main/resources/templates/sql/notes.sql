@@ -8,6 +8,7 @@ create table note
     created_at  timestamp     not null default current_timestamp,
     updated_at  timestamp     not null default current_timestamp on update current_timestamp,
     writer      varchar(32)   not null,
+    is_deleted  boolean       not null default false,
     primary key (id)
 );
 
@@ -53,12 +54,14 @@ values ('다했어', 'jinie 가 다했어 6', 'jinie');
 select *
 from note;
 
-select id, column_name, content, created_at, updated_at, writer
+select note.id, note.column_name, note.content, note.created_at, note.updated_at, note.writer, note.is_deleted
 from note;
 
 select distinct note.column_name
 from note;
 
-select note.id, note.column_name, note.content, note.created_at, note.updated_at, note.writer from note where column_name = '다했어';
+select note.id, note.column_name, note.content, note.created_at, note.updated_at, note.writer, note.is_deleted
+from note
+where column_name = '다했어';
 
 commit;

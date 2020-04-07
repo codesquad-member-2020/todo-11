@@ -18,4 +18,9 @@ public class Note {
   private LocalDateTime createdAt;
   private LocalDateTime updatedAt;
   private String writer;
+  private boolean isDeleted;
+
+  public void delete(){
+    isDeleted = true;
+  }
 }
