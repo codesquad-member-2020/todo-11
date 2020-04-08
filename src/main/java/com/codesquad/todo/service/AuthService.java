@@ -8,7 +8,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -42,24 +41,24 @@ public class AuthService {
 
   private String create(String value) {
 
-    String jwt = Jwts.builder()
-        .setHeaderParam("typ", "JWT")
-        .setIssuer("Dan")
-        .setIssuedAt(new Date(System.currentTimeMillis()))
-        .setExpiration(new Date(System.currentTimeMillis() + MINUTE_10))
-        .setSubject("loginToken")
-        .claim("userId", value)
-        .signWith(SignatureAlgorithm.HS256, this.generateKey())
-        .compact();
+    String jwt = null;
+    try {
+      jwt = Jwts.builder()
+          .setHeaderParam("typ", "JWT")
+          .setIssuer("Dan")
+          .setIssuedAt(new Date(System.currentTimeMillis()))
+          .setExpiration(new Date(System.currentTimeMillis() + MINUTE_10))
+          .setSubject("loginToken")
+          .claim("userId", value)
+          .signWith(SignatureAlgorithm.HS256, this.generateKey())
+          .compact();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
     return jwt;
   }
 
-  private byte[] generateKey() {
-    try {
-      return AuthMessages.SALT.getBytes("UTF-8");
-    } catch (UnsupportedEncodingException e) {
-      e.printStackTrace();
-      return null;
-    }
+  private byte[] generateKey() throws Exception {
+    return AuthMessages.SALT.getBytes("UTF-8");
   }
 }
