@@ -10,9 +10,13 @@ import UIKit
 
 class ListViewController: UIViewController {
 
-    @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var badgeLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func touchUpAddButton(_ sender: UIButton) {
+        self.parent?.performSegue(withIdentifier: editorSegue, sender: nil)
+    }
     
     private var tableViewDataSource = ListTableViewDataSource()
     private let tableViewCell = UINib(nibName: "ListTableViewCell", bundle: nil)
@@ -25,8 +29,8 @@ class ListViewController: UIViewController {
     }
     
     func configureHeader() {
-        countLabel.layer.cornerRadius = 12
-        countLabel.layer.masksToBounds = true
+        badgeLabel.layer.cornerRadius = 12
+        badgeLabel.layer.masksToBounds = true
     }
     
     func configureTableView() {
