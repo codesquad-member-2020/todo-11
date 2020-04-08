@@ -11,7 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RestController
@@ -19,12 +22,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/login")
 public class AuthController {
 
+  private static final String HEADER_AUTH = "Authorization";
+
   @Autowired
   AuthService authService;
 
-  @ApiOperation(value = "", notes = "Get JWT token", tags = "not complete")
+  @ApiOperation(value = "", notes = "Get JWT token", tags = "Mockup")
   @GetMapping
-  public ResponseEntity<ApiResponse> login() {
-    return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, authService.login()), HttpStatus.OK);
+  public ResponseEntity<ApiResponse> login(@RequestParam String userId) {
+    return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, authService.login(userId)), HttpStatus.OK);
+  }
+
+  @ApiOperation(value = "", notes = "Verify JWT token", tags = "Mockup")
+  @GetMapping("verify")
+  public ResponseEntity<ApiResponse> verifyToken(HttpServletRequest request) {
+    if (authService.verifyToken(request.getHeader(HEADER_AUTH))) {
+      return new ResponseEntity<>(new ApiResponse(SuccessMessages.SUCCESS, null), HttpStatus.OK);
+    }
+
+    return new ResponseEntity<>(new ApiResponse("Error", null), HttpStatus.OK);
   }
 }
