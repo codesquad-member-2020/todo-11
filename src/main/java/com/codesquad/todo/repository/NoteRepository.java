@@ -8,14 +8,10 @@ import java.util.List;
 
 public interface NoteRepository extends CrudRepository<Note, Long> {
 
-  @Query(
-      "SELECT note.id, note.column_name, note.content, note.created_at, note.updated_at, note.writer, note.deleted " +
-      "FROM note " +
-      "WHERE note.deleted = FALSE")
-  List<Note> findAllAndDeletedFalse();
+  List<Note> findAll();
 
   @Query(
-      "SELECT note.id, note.column_name, note.content, note.created_at, note.updated_at, note.writer, note.deleted " +
+      "SELECT note.id, note.column_name, note.content, note.created_at, note.updated_at, note.user_id, note.deleted " +
       "FROM note " +
       "WHERE column_name = :columnName " +
       "AND note.deleted = FALSE")

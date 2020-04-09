@@ -17,7 +17,7 @@ public class NoteService {
 
   public Map<String, Object> getAllNotes() {
     Map<String, Object> result = new HashMap<>();
-    result.put("notes", noteRepository.findAllAndDeletedFalse());
+    result.put("notes", noteRepository.findAll());
 
     return result;
   }
