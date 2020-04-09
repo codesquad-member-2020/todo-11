@@ -22,8 +22,10 @@ class ListTableViewDataSource: NSObject, UITableViewDataSource {
         return cell
     }
     
-    func request(_ completion: @escaping () -> ()) {
-        taskInformationManager.request(completion)
+    func request(column: Column, _ completion: @escaping () -> ()) {
+        taskInformationManager.request(column: column) {
+            completion()
+        }
     }
     
     func tasksCount() -> Int {

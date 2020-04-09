@@ -12,7 +12,7 @@ class ColumnInformationManager {
     
     var columns: [String]?
     
-    func request(_ completion: @escaping () -> ()) {
+    func request(_ completion: @escaping ([String]) -> ()) {
         guard let url = URL(string: "http://15.165.223.140:8080/api/columns") else { return }
         let request = URLRequest(url: url)
         let session = URLSession(configuration: .default)
@@ -21,7 +21,8 @@ class ColumnInformationManager {
             let decoder = JSONDecoder()
             guard let responseData = try? decoder.decode(ColumnInformation.self, from: data) else { return }
             self.columns = responseData.contents.columns
-            completion()
+            guard let columns = self.columns else { return }
+            completion(columns)
         }
         dataTask.resume()
     }

@@ -13,8 +13,10 @@ class TaskInformationManager {
     var tasks: [Task]?
     var tasksCount: Int?
     
-    func request(_ completion: @escaping () -> ()) {
-        guard let url = URL(string: toDoRequestURL) else { return }
+    func request(column: Column, _ completion: @escaping () -> ()) {
+        guard let encoded = "\(column)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
+        let urlString = "http://15.165.223.140:8080/api/notes/column?columnName=\(encoded)"
+        guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: request) { (data, response, error) in

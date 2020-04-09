@@ -20,6 +20,7 @@ class ListViewController: UIViewController {
     
     private var tableViewDataSource = ListTableViewDataSource()
     private let tableViewCell = UINib(nibName: "ListTableViewCell", bundle: nil)
+    var column: Column?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,8 @@ class ListViewController: UIViewController {
     func configureHeader() {
         badgeLabel.layer.cornerRadius = 12
         badgeLabel.layer.masksToBounds = true
+        guard let column = self.column else { return }
+        titleLabel.text = "\(column)"
     }
     
     func configureTableView() {
@@ -40,7 +43,8 @@ class ListViewController: UIViewController {
     }
     
     func request() {
-        tableViewDataSource.request {
+        guard let column = self.column else { return }
+        tableViewDataSource.request(column: column) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.badgeLabel.text = String(self.tableViewDataSource.tasksCount())

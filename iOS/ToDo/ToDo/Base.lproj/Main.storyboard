@@ -127,7 +127,7 @@
             <objects>
                 <viewController id="zTG-Qc-OVr" customClass="ListViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R2h-8b-o54">
-                        <rect key="frame" x="0.0" y="0.0" width="384.5" height="764"/>
+                        <rect key="frame" x="0.0" y="0.0" width="385" height="764"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsN-rh-2b4">

@@ -20,3 +20,15 @@ struct Columns: Codable {
     let columns: [String]
     
 }
+
+enum Column: String, CustomStringConvertible {
+
+    case toDo = "해야할일"
+    case inProgress = "하는중"
+    case done = "다했어"
+    
+    var description: String {
+        return "\(self.rawValue)"
+    }
+    
+}
