@@ -8,15 +8,21 @@ import java.util.List;
 
 public interface NoteRepository extends CrudRepository<Note, Long> {
 
-  List<Note> findAll();
+  @Query(
+      "SELECT note.id, note.column_name, note.content, note.created_at, note.updated_at, note.writer, note.deleted " +
+      "FROM note " +
+      "WHERE note.deleted = FALSE")
+  List<Note> findAllAndDeletedFalse();
 
   @Query(
-      "SELECT note.id, note.column_name, note.content, note.created_at, note.updated_at, note.writer, note.is_deleted " +
+      "SELECT note.id, note.column_name, note.content, note.created_at, note.updated_at, note.writer, note.deleted " +
       "FROM note " +
-      "WHERE column_name = :columnName")
-  List<Note> findAllByColumnName(String columnName);
+      "WHERE column_name = :columnName " +
+      "AND note.deleted = FALSE")
+  List<Note> findAllByColumnNameAndDeletedFalse(String columnName);
 
   @Query("SELECT DISTINCT note.column_name " +
-         "FROM note;")
-  List<String> findDistinctByColumnName();
+         "FROM note " +
+         "WHERE note.deleted = FALSE")
+  List<String> findDistinctByColumnNameAndDeletedFalse();
 }

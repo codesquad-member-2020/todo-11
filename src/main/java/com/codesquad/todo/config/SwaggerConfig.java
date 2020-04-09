@@ -37,6 +37,7 @@ public class SwaggerConfig {
         .paths(PathSelectors.ant("/api/**"))
         .build()
         .apiInfo(metadata())
+        .pathMapping("/")
         .securityContexts(Lists.newArrayList(securityContext()))
         .securitySchemes(Lists.newArrayList(apiKey()));
   }

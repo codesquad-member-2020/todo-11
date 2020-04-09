@@ -1,13 +1,13 @@
-drop table if exists note;
+DROP TABLE IF EXISTS note;
 
-create table note
+CREATE TABLE note
 (
-    id          int           not null auto_increment,
-    column_name varchar(100)  not null,
-    content     varchar(1000) not null,
-    created_at  timestamp     not null default current_timestamp,
-    updated_at  timestamp     not null default current_timestamp on update current_timestamp,
-    writer      varchar(32)   not null,
-    is_deleted  boolean       not null default false,
-    primary key (id)
+    id          INT           NOT NULL AUTO_INCREMENT,
+    column_name VARCHAR(100)  NOT NULL,
+    content     VARCHAR(1000) NOT NULL,
+    created_at  TIMESTAMP     NOT NULL DEFAULT current_timestamp,
+    updated_at  TIMESTAMP     NOT NULL DEFAULT current_timestamp ON UPDATE current_timestamp,
+    writer      VARCHAR(32)   NOT NULL,
+    deleted     BOOLEAN       NOT NULL DEFAULT FALSE,
+    PRIMARY KEY (id)
 );
