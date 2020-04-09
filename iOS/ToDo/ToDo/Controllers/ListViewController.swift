@@ -26,6 +26,7 @@ class ListViewController: UIViewController {
         
         configureHeader()
         configureTableView()
+        request()
     }
     
     func configureHeader() {
@@ -36,6 +37,15 @@ class ListViewController: UIViewController {
     func configureTableView() {
         tableView.dataSource = tableViewDataSource
         tableView.register(tableViewCell, forCellReuseIdentifier: listTableViewCell)
+    }
+    
+    func request() {
+        tableViewDataSource.request {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.badgeLabel.text = String(self.tableViewDataSource.tasksCount())
+            }
+        }
     }
 
 }

@@ -20,6 +20,7 @@
 		786721C5243CAF31003441CC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786721C4243CAF31003441CC /* Constants.swift */; };
 		786721C9243CE4B4003441CC /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786721C8243CE4B4003441CC /* EditorViewController.swift */; };
 		78A65F08243DD0EE0011D7B2 /* TaskInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A65F07243DD0EE0011D7B2 /* TaskInformation.swift */; };
+		78A65F0A243DEA670011D7B2 /* TaskInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A65F09243DEA670011D7B2 /* TaskInformationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		786721C4243CAF31003441CC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		786721C8243CE4B4003441CC /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		78A65F07243DD0EE0011D7B2 /* TaskInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInformation.swift; sourceTree = "<group>"; };
+		78A65F09243DEA670011D7B2 /* TaskInformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInformationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				78A65F07243DD0EE0011D7B2 /* TaskInformation.swift */,
+				78A65F09243DEA670011D7B2 /* TaskInformationManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				786721C3243CAEF9003441CC /* ListTableViewDataSource.swift in Sources */,
 				786721BB243CAC06003441CC /* MainViewController.swift in Sources */,
 				783C61D6243C7226005E6097 /* AppDelegate.swift in Sources */,
+				78A65F0A243DEA670011D7B2 /* TaskInformationManager.swift in Sources */,
 				786721C9243CE4B4003441CC /* EditorViewController.swift in Sources */,
 				786721BD243CAC2C003441CC /* ListViewController.swift in Sources */,
 				786721C5243CAF31003441CC /* Constants.swift in Sources */,

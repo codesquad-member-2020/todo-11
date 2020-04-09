@@ -10,13 +10,24 @@ import UIKit
 
 class ListTableViewDataSource: NSObject, UITableViewDataSource {
     
+    let taskInformationManager = TaskInformationManager()
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return taskInformationManager.tasksCount ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: listTableViewCell, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: listTableViewCell, for: indexPath) as! ListTableViewCell
+        cell.titleLabel.text = taskInformationManager.tasks?[indexPath.row].content
         return cell
+    }
+    
+    func request(_ completion: @escaping () -> ()) {
+        taskInformationManager.request(completion)
+    }
+    
+    func tasksCount() -> Int {
+        return taskInformationManager.tasksCount ?? 0
     }
 
 }
