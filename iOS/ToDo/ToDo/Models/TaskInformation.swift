@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Response: Codable {
+struct TaskInformation: Codable {
     
     let message: String
     let contents: Tasks

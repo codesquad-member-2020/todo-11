@@ -20,7 +20,7 @@ class TaskInformationManager {
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             guard let data = data else { return }
             let decoder = JSONDecoder()
-            guard let responseData = try? decoder.decode(Response.self, from: data) else { return }
+            guard let responseData = try? decoder.decode(TaskInformation.self, from: data) else { return }
             self.tasks = responseData.contents.tasks
             self.tasksCount = responseData.contents.tasks.count
             completion()
