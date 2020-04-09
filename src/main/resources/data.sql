@@ -1,5 +1,5 @@
 INSERT INTO note(column_name, content, user_id)
-VALUES ('해야할일', 'dan 이 해야할 일 1', 'dan');
+VALUES ('해야할일', 'dan 이 해야할 일 1 \n 2번쨰 줄', 'dan');
 INSERT INTO note(column_name, content, user_id)
 VALUES ('해야할일', 'dan 이 해야할 일 2', 'dan');
 INSERT INTO note(column_name, content, user_id)

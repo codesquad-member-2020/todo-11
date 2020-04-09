@@ -1,28 +1,34 @@
 package com.codesquad.todo.exception;
 
-import com.codesquad.todo.bean.ApiResponse;
+import com.codesquad.todo.bean.ErrorResponse;
 import com.codesquad.todo.message.ErrorMessages;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
-@ControllerAdvice
+@RestControllerAdvice
 public class CustomAdvice {
 
   @ExceptionHandler(Exception.class)
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-  @ResponseBody
-  public ApiResponse exception(Exception e) {
-    Map<String, Object> response = new HashMap<>();
-    response.put("errorTrace", e.getMessage());
+  public ErrorResponse handleException(Exception e) {
+    return new ErrorResponse(ErrorMessages.EXCEPTION, e.getMessage());
+  }
 
-    return new ApiResponse(ErrorMessages.INTERNAL_SERVER_ERROR, response);
+  @ExceptionHandler(HttpMessageNotReadableException.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  public ErrorResponse handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
+    return new ErrorResponse(ErrorMessages.HTTP_MESSAGE_NOT_READABLE_EXCEPTION, e.getMessage());
+  }
+
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  @ResponseStatus(HttpStatus.FORBIDDEN)
+  public ErrorResponse handleHttpMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    return new ErrorResponse(ErrorMessages.METHOD_ARGUMENT_NOT_VALID_EXCEPTION, e.getMessage());
   }
 }
