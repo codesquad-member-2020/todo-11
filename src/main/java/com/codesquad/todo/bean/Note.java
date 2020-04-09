@@ -27,7 +27,7 @@ public class Note {
   private LocalDateTime updatedAt;
 
   @NotBlank // login 구현 후 @Null 로 변경합니다
-  private String writer;
+  private String userId;
   @AssertFalse
   private boolean deleted;
 
