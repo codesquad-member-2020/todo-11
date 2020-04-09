@@ -17,7 +17,7 @@ public class NoteService {
 
   public Map<String, Object> getAllNotes() {
     Map<String, Object> result = new HashMap<>();
-    result.put("notes", noteRepository.findAll());
+    result.put("notes", noteRepository.findAllAndDeletedFalse());
 
     return result;
   }
@@ -42,7 +42,7 @@ public class NoteService {
 
   public Map<String, Object> getSpecificColumnNotes(String columnName) {
     Map<String, Object> result = new HashMap<>();
-    result.put("notes", noteRepository.findAllByColumnName(columnName));
+    result.put("notes", noteRepository.findAllByColumnNameAndDeletedFalse(columnName));
 
     return result;
   }

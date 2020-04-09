@@ -15,7 +15,7 @@ public class CoulumService {
 
   public Map<String, Object> getColumns() {
     Map<String, Object> result = new HashMap<>();
-    result.put("columns", noteRepository.findDistinctByColumnName());
+    result.put("columns", noteRepository.findDistinctByColumnNameAndDeletedFalse());
 
     return result;
   }
