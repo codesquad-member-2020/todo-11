@@ -17,36 +17,39 @@ import javax.validation.Valid;
 @RestController
 @Validated
 @RequestMapping("/api/notes")
+@ResponseStatus(HttpStatus.OK)
 public class NoteController {
 
   @Autowired
   NoteService noteService;
 
   @ApiOperation(value = "", notes = "Get all notes", tags = "Mockup")
-  @ResponseStatus(HttpStatus.OK)
   @GetMapping
   public ApiResponse getAllNotes() {
     return new ApiResponse(SuccessMessages.SUCCESS, noteService.getAllNotes());
   }
 
   @ApiOperation(value = "", notes = "Create note", tags = "Dev")
-  @ResponseStatus(HttpStatus.OK)
   @PostMapping
   public ApiResponse createNote(@Valid @RequestBody Note note) {
     return new ApiResponse(SuccessMessages.SUCCESS, noteService.createNote(note));
   }
 
   @ApiOperation(value = "", notes = "Soft delete note", tags = "Dev")
-  @ResponseStatus(HttpStatus.OK)
   @DeleteMapping
   public ApiResponse deleteNote(@RequestParam Long id) {
     return new ApiResponse(SuccessMessages.SUCCESS, noteService.deleteNote(id));
   }
 
   @ApiOperation(value = "", notes = "Get all notes about specific column", tags = "Dev")
-  @ResponseStatus(HttpStatus.OK)
   @GetMapping("/column")
   public ApiResponse getSpecificColumnNotes(@RequestParam String columnName) {
     return new ApiResponse(SuccessMessages.SUCCESS, noteService.getSpecificColumnNotes(columnName));
+  }
+
+  @ApiOperation(value = "", notes = "Patch note", tags = "Dev")
+  @PatchMapping
+  public ApiResponse patchNote(@RequestBody Note note) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.patchNote(note));
   }
 }

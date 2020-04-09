@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
+import org.springframework.util.ObjectUtils;
 
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.NotBlank;
@@ -44,5 +45,17 @@ public class Note implements Serializable {
 
   public void delete() {
     deleted = true;
+  }
+
+  public void patch(Note note) {
+    if (!ObjectUtils.isEmpty(note.columnName)) {
+      columnName = note.columnName;
+    }
+
+    if (!ObjectUtils.isEmpty(note.content)) {
+      content = note.content;
+    }
+
+    updatedAt = LocalDateTime.now();
   }
 }
