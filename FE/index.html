@@ -1,13 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <script src="https://kit.fontawesome.com/a4cc172c99.js" crossorigin="anonymous"></script>
+    <title>TODO LIST</title>
 </head>
+
 <body>
-    <button class="plus-button">plus</button>
-    <div class="result">0</div>
-    <button class="minus-button">minus</button>
+    <header class="header">
+        <span class="title">TODO 서비스</span>
+        <button class="menu">menu</button>
+    </header>
+    <section class="content">
+        <div class="column-wrap">
+            <div class="column">
+                <div class="column-menu">
+                    <div class="column-menu_left">
+                        <span class="column-menu_count">3</span>
+                        <span class="column-menu_title">해야할 일</span>
+                    </div>
+                    <div class="column-menu_right">
+                        <button class="column-menu_addBtn">+</button>
+                        <button class="column-menu_menu">&hellip;</button>
+                    </div>
+                </div>
+                <div class="add-note">
+                    <input class="add-note_input" type="text" placeholder="Enter a note">
+                    <button class="add-note_addBtn">Add</button>
+                    <button class="add-note_cancleBtn">Cancle</button>
+                </div>
+
+                <div class="note">
+                    <span class="note-icon"><i class="far fa-comment-alt"></i></span>
+                    <span class="note-main">
+                        <div class="note-title">1번 노트 제목!</div>
+                        <div class="note-content">내용~~~</div>
+                        <div class="note-author">
+                            <span class="note-author_msg">Added by</span>
+                            <span class="note-author_name">Sally</span>
+                        </div>
+                    </span>
+                    <button class="note-removeBtn">X</button>
+                </div>
+                <div class="note">
+                    <span class="note-icon"><i class="far fa-comment-alt"></i></span>
+                    <span class="note-main">
+                        <div class="note-title">2번 노트 제목!</div>
+                        <div class="note-content">2내용~~~</div>
+                        <div class="note-author">
+                            <span class="note-author_msg">Added by</span>
+                            <span class="note-author_name">Jinie</span>
+                        </div>
+                    </span>
+                    <button class="note-removeBtn">X</button>
+                </div>
+                <div class="note">
+                    <span class="note-icon"><i class="far fa-comment-alt"></i></span>
+                    <span class="note-main">
+                        <div class="note-title">2번 노트 제목!</div>
+                        <div class="note-content">2내용~~~</div>
+                        <div class="note-author">
+                            <span class="note-author_msg">Added by</span>
+                            <span class="note-author_name">Jinie</span>
+                        </div>
+                    </span>
+                    <button class="note-removeBtn">X</button>
+                </div>
+                <div class="note">
+                    <span class="note-icon"><i class="far fa-comment-alt"></i></span>
+                    <span class="note-main">
+                        <div class="note-title">2번 노트 제목!</div>
+                        <div class="note-content">2내용~~~</div>
+                        <div class="note-author">
+                            <span class="note-author_msg">Added by</span>
+                            <span class="note-author_name">Jinie</span>
+                        </div>
+                    </span>
+                    <button class="note-removeBtn">X</button>
+                </div>
+                <div class="note">
+                    <span class="note-icon"><i class="far fa-comment-alt"></i></span>
+                    <span class="note-main">
+                        <div class="note-title">2번 노트 제목!</div>
+                        <div class="note-content">2내용~~~</div>
+                        <div class="note-author">
+                            <span class="note-author_msg">Added by</span>
+                            <span class="note-author_name">Jinie</span>
+                        </div>
+                    </span>
+                    <button class="note-removeBtn">X</button>
+                </div>
+                <div class="note">
+                    <span class="note-icon"><i class="far fa-comment-alt"></i></span>
+                    <span class="note-main">
+                        <div class="note-title">2번 노트 제목!</div>
+                        <div class="note-content">2내용~~~</div>
+                        <div class="note-author">
+                            <span class="note-author_msg">Added by</span>
+                            <span class="note-author_name">Jinie</span>
+                        </div>
+                    </span>
+                    <button class="note-removeBtn">X</button>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="column-menu">
+                    <div class="column-menu_left">
+                        <span class="column-menu_count">3</span>
+                        <span class="column-menu_title">해야할 일</span>
+                    </div>
+                    <div class="column-menu_right">
+                        <button class="column-menu_addBtn">+</button>
+                        <button class="column-menu_menu">&hellip;</button>
+                    </div>
+                </div>
+                <div class="note">
+                    <span class="note-icon"><i class="far fa-comment-alt"></i></span>
+                    <span class="note-main">
+                        <div class="note-title">1번 노트 제목!</div>
+                        <div class="note-content">내용~~~</div>
+                        <div class="note-author">
+                            <span class="note-author_msg">Added by</span>
+                            <span class="note-author_name">Sally</span>
+                        </div>
+                    </span>
+                    <button class="note-removeBtn">X</button>
+                </div>
+                <div class="note">
+                    <span class="note-icon"><i class="far fa-comment-alt"></i></span>
+                    <span class="note-main">
+                        <div class="note-title">2번 노트 제목!</div>
+                        <div class="note-content">2내용~~~</div>
+                        <div class="note-author">
+                            <span class="note-author_msg">Added by</span>
+                            <span class="note-author_name">Jinie</span>
+                        </div>
+                    </span>
+                    <button class="note-removeBtn">X</button>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="column-menu">
+                    <div class="column-menu_left">
+                        <span class="column-menu_count">3</span>
+                        <span class="column-menu_title">해야할 일</span>
+                    </div>
+                    <div class="column-menu_right">
+                        <button class="column-menu_addBtn">+</button>
+                        <button class="column-menu_menu">&hellip;</button>
+                    </div>
+                </div>
+                <div class="note">
+                    <span class="note-icon"><i class="far fa-comment-alt"></i></span>
+                    <span class="note-main">
+                        <div class="note-title">1번 노트 제목!</div>
+                        <div class="note-content">내용~~~</div>
+                        <div class="note-author">
+                            <span class="note-author_msg">Added by</span>
+                            <span class="note-author_name">Sally</span>
+                        </div>
+                    </span>
+                    <button class="note-removeBtn">X</button>
+                </div>
+                <div class="note">
+                    <span class="note-icon"><i class="far fa-comment-alt"></i></span>
+                    <span class="note-main">
+                        <div class="note-title">2번 노트 제목!</div>
+                        <div class="note-content">2내용~~~</div>
+                        <div class="note-author">
+                            <span class="note-author_msg">Added by</span>
+                            <span class="note-author_name">Jinie</span>
+                        </div>
+                    </span>
+                    <button class="note-removeBtn">X</button>
+                </div>
+            </div>
+
+            <button class="add-column">+Add column</button>
+        </div>
+    </section>
 </body>
+
 </html>
