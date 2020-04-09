@@ -25,31 +25,31 @@ public class NoteController {
 
   @ApiOperation(value = "", notes = "Get all notes", tags = "Mockup")
   @GetMapping
-  public ApiResponse getAllNotes() {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getAllNotes());
+  public ApiResponse getAll() {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getAll());
   }
 
   @ApiOperation(value = "", notes = "Create note", tags = "Dev")
   @PostMapping
-  public ApiResponse createNote(@Valid @RequestBody Note note) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.createNote(note));
+  public ApiResponse create(@Valid @RequestBody Note note) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.create(note));
   }
 
   @ApiOperation(value = "", notes = "Soft delete note", tags = "Dev")
   @DeleteMapping
-  public ApiResponse deleteNote(@RequestParam Long id) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.deleteNote(id));
+  public ApiResponse delete(@RequestParam Long id) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.delete(id));
   }
 
   @ApiOperation(value = "", notes = "Get all notes about specific column", tags = "Dev")
   @GetMapping("/column")
-  public ApiResponse getSpecificColumnNotes(@RequestParam String columnName) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getSpecificColumnNotes(columnName));
+  public ApiResponse getSpecificColumn(@RequestParam String columnName) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getSpecificColumn(columnName));
   }
 
   @ApiOperation(value = "", notes = "Patch note", tags = "Dev")
   @PatchMapping
-  public ApiResponse patchNote(@RequestBody Note note) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.patchNote(note));
+  public ApiResponse patch(@RequestBody Note note) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.patch(note));
   }
 }

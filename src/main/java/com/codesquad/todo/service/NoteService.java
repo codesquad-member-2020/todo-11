@@ -21,21 +21,21 @@ public class NoteService {
   @Autowired
   NoteRepository noteRepository;
 
-  public Map<String, Object> getAllNotes() {
+  public Map<String, Object> getAll() {
     Map<String, Object> result = new HashMap<>();
     result.put("notes", noteRepository.findAll());
 
     return result;
   }
 
-  public Map<String, Object> createNote(Note note) {
+  public Map<String, Object> create(Note note) {
     Map<String, Object> result = new HashMap<>();
     result.put("note", noteRepository.save(note));
 
     return result;
   }
 
-  public Map<String, Object> deleteNote(Long id) {
+  public Map<String, Object> delete(Long id) {
     Optional<Note> noteOptional = noteRepository.findById(id);
     Note note = noteOptional.orElseThrow(() -> new NoSuchElementException(ErrorMessages.NO_SUCH_NOTE_OF_REQUEST_ID));
 
@@ -47,14 +47,14 @@ public class NoteService {
     return result;
   }
 
-  public Map<String, Object> getSpecificColumnNotes(String columnName) {
+  public Map<String, Object> getSpecificColumn(String columnName) {
     Map<String, Object> result = new HashMap<>();
     result.put("notes", noteRepository.findAllByColumnNameAndDeletedFalse(columnName));
 
     return result;
   }
 
-  public Map<String, Object> patchNote(Note note) {
+  public Map<String, Object> patch(Note note) {
     Optional<Note> noteOptional = noteRepository.findById(note.getId());
     Note findNote = noteOptional.orElseThrow(
         () -> new NoSuchElementException(ErrorMessages.NO_SUCH_NOTE_OF_REQUEST_ID));
