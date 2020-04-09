@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.NoSuchElementException;
+
 @Slf4j
 @RestControllerAdvice
 public class CustomAdvice {
@@ -30,5 +32,12 @@ public class CustomAdvice {
   @ResponseStatus(HttpStatus.FORBIDDEN)
   public ErrorResponse handleHttpMethodArgumentNotValidException(MethodArgumentNotValidException e) {
     return new ErrorResponse(ErrorMessages.METHOD_ARGUMENT_NOT_VALID_EXCEPTION, e.getMessage());
+  }
+
+  @ExceptionHandler(NoSuchElementException.class)
+  @ResponseStatus(HttpStatus.FORBIDDEN)
+  public ErrorResponse handleNoSuchElementException(NoSuchElementException e) {
+
+    return new ErrorResponse(ErrorMessages.NO_SUCH_ELEMENT_EXCEPTION, e.getMessage());
   }
 }
