@@ -2,8 +2,8 @@ import { css } from '../css/style.css';
 import { getElement, show, hide } from './util/dom.js';
 import { requestTodoListState } from './server/todoListState.js'
 
-window.addEventListener('DOMContentLoaded', () => {
-  requestTodoListState();
+window.addEventListener('DOMContentLoaded', async () => {
+  await todoListRender();
 
   getElement('.column-menu_addBtn').addEventListener('click', () => {
     const addNote = getElement('.add-note');

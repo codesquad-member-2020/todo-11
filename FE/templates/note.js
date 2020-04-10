@@ -3,9 +3,10 @@ import { getElement } from '../src/util/dom.js'
 const stateRender = (noteState) => {
     let noteHTML = '';
 
-    noteState.contents.notes.forEach((note) => {
+    noteState.contents.notes.forEach((note, column) => {
+        getElement(`.${column} > .column-menu_count`).innerHTML++;
         noteHTML += `
-            <div class="note">
+            <div class="note" value="${note.id}">
                 <span class="note-icon"><i class="far fa-comment-alt"></i></span>
                 <span class="note-main">
                     <div class="note-title">${note.content}</div>
@@ -24,6 +25,6 @@ const stateRender = (noteState) => {
 }
 
 export const drawNoteSection = (noteState, column) => {
-    getElement('.column-menu_count').innerHTML = noteState.contents.notes.length;
-    getElement(`.${column} > .note-wrap`).innerHTML = stateRender(noteState);
+    getElement(`.${column} > .note-wrap`).innerHTML = stateRender(noteState, column);
+    // getElement(`.column-menu_count`).innerHTML = noteState.contents.notes.length;
 }

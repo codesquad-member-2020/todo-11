@@ -26,7 +26,7 @@ const stateRender = (columnState) => {
         `
     })
 
-    return columnHTML;
+    return columnHTML + '<button class="add-column">+Add column</button>';
 }
 
 export const drawColumnSection = (columnState) => {
