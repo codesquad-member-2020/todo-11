@@ -17,39 +17,36 @@ import javax.validation.Valid;
 @RestController
 @Validated
 @RequestMapping("/api/notes")
-@ResponseStatus(HttpStatus.OK)
 public class NoteController {
 
   @Autowired
   NoteService noteService;
 
   @ApiOperation(value = "", notes = "Get all notes", tags = "Mockup")
+  @ResponseStatus(HttpStatus.OK)
   @GetMapping
-  public ApiResponse getAll() {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getAll());
+  public ApiResponse getAllNotes() {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getAllNotes());
   }
 
   @ApiOperation(value = "", notes = "Create note", tags = "Dev")
+  @ResponseStatus(HttpStatus.OK)
   @PostMapping
-  public ApiResponse create(@Valid @RequestBody Note note) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.create(note));
+  public ApiResponse createNote(@Valid @RequestBody Note note) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.createNote(note));
   }
 
   @ApiOperation(value = "", notes = "Soft delete note", tags = "Dev")
+  @ResponseStatus(HttpStatus.OK)
   @DeleteMapping
-  public ApiResponse delete(@RequestParam Long id) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.delete(id));
+  public ApiResponse deleteNote(@RequestParam Long id) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.deleteNote(id));
   }
 
   @ApiOperation(value = "", notes = "Get all notes about specific column", tags = "Dev")
+  @ResponseStatus(HttpStatus.OK)
   @GetMapping("/column")
-  public ApiResponse getSpecificColumn(@RequestParam String columnName) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getSpecificColumn(columnName));
-  }
-
-  @ApiOperation(value = "", notes = "Patch note", tags = "Dev")
-  @PatchMapping
-  public ApiResponse patch(@RequestBody Note note) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.patch(note));
+  public ApiResponse getSpecificColumnNotes(@RequestParam String columnName) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getSpecificColumnNotes(columnName));
   }
 }
