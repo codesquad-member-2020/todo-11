@@ -18,7 +18,7 @@ const stateRender = (columnState) => {
                 </div>
                 <div class="add-note">
                     <input class="add-note_input" type="text" placeholder="Enter a note">
-                    <button class="add-note_addBtn">Add</button>
+                    <button class="add-note_addBtn" disabled="disabled">Add</button>
                     <button class="add-note_cancleBtn">Cancle</button>
                 </div>
                 <div class="note-wrap"></div>
