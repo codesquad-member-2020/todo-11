@@ -4,7 +4,7 @@ const stateRender = (noteState) => {
     let noteHTML = '';
 
     noteState.contents.notes.forEach((note, column) => {
-        getElement(`.${column} > .column-menu_count`).innerHTML++;
+        // getElement(`.${column} > .column-menu_count`).innerHTML++;
 
         const noteContents = note.content.split('\n');
         const noteTitle = noteContents[0];
