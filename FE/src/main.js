@@ -1,6 +1,6 @@
 import { css } from '../css/style.css';
 import { getElement, show, hide } from './util/dom.js';
-import { requestTodoListState } from './server/todoListState.js'
+import { todoListRender } from './server/todoListState.js'
 
 window.addEventListener('DOMContentLoaded', async () => {
   await todoListRender();
