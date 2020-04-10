@@ -5,6 +5,7 @@ body {
   }
 
 .header {
+    box-sizing: border-box;
     display: flex;
     background-color: black;
     color: white;
@@ -16,7 +17,6 @@ body {
 
 .header .menu {
     color: white;
-    margin-right: 40px;
 }
 
 .column-wrap {
@@ -25,13 +25,13 @@ body {
 }
 
 .column {
-    height: 600px;
+    height: 650px;
     margin: 10px;
     width: 350px;
     border-radius: 10px;
     padding: 10px;
     background-color: #F0F1F3;
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .column-menu {
