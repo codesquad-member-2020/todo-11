@@ -8,5 +8,8 @@
 
 import Foundation
 
-let listTableViewCell = "listTableViewCell"
+let toDoSegue = "toDoSegue"
+let inProgressSegue = "inProgressSegue"
+let doneSegue = "doneSegue"
 let editorSegue = "editorSegue"
+let listTableViewCell = "listTableViewCell"

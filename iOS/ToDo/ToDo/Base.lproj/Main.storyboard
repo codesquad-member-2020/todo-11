@@ -21,19 +21,19 @@
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sqr-3O-Y4K">
                                         <rect key="frame" x="0.0" y="0.0" width="384.5" height="764"/>
                                         <connections>
-                                            <segue destination="zTG-Qc-OVr" kind="embed" id="5lS-sG-vnp"/>
+                                            <segue destination="zTG-Qc-OVr" kind="embed" identifier="toDoSegue" id="5lS-sG-vnp"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03k-xn-798">
                                         <rect key="frame" x="404.5" y="0.0" width="385" height="764"/>
                                         <connections>
-                                            <segue destination="zTG-Qc-OVr" kind="embed" id="Ntt-f1-DIm"/>
+                                            <segue destination="zTG-Qc-OVr" kind="embed" identifier="inProgressSegue" id="lpO-dR-ock"/>
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U02-5N-u05">
                                         <rect key="frame" x="809.5" y="0.0" width="384.5" height="764"/>
                                         <connections>
-                                            <segue destination="zTG-Qc-OVr" kind="embed" id="pjI-OH-rGQ"/>
+                                            <segue destination="zTG-Qc-OVr" kind="embed" identifier="doneSegue" id="Uak-WK-3aw"/>
                                         </connections>
                                     </containerView>
                                 </subviews>
@@ -127,7 +127,7 @@
             <objects>
                 <viewController id="zTG-Qc-OVr" customClass="ListViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R2h-8b-o54">
-                        <rect key="frame" x="0.0" y="0.0" width="384.5" height="764"/>
+                        <rect key="frame" x="0.0" y="0.0" width="385" height="764"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsN-rh-2b4">
@@ -151,7 +151,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egh-lf-cew">
-                                        <rect key="frame" x="50" y="16" width="42" height="21"/>
+                                        <rect key="frame" x="50" y="16" width="200" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -186,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfq-vx-nnj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="499" y="293"/>
+            <point key="canvasLocation" x="499" y="286"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yd0-oK-Rrd">
@@ -211,6 +211,6 @@
         <image name="plus" catalog="system" width="64" height="56"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pjI-OH-rGQ"/>
+        <segue reference="Uak-WK-3aw"/>
     </inferredMetricsTieBreakers>
 </document>
