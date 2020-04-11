@@ -86,11 +86,11 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0F-Os-uoM">
-                                <rect key="frame" x="100" y="100" width="72" height="42"/>
+                                <rect key="frame" x="100" y="100" width="498.5" height="42"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Content" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Cjn-WR-tiv">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Cjn-WR-tiv">
                                 <rect key="frame" x="100" y="150" width="498.5" height="556"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -102,6 +102,7 @@
                         <constraints>
                             <constraint firstItem="Cjn-WR-tiv" firstAttribute="leading" secondItem="VhW-ft-gFL" secondAttribute="leading" constant="100" id="0M0-rc-Bfy"/>
                             <constraint firstItem="zSm-Tu-3ET" firstAttribute="top" secondItem="VhW-ft-gFL" secondAttribute="top" constant="24" id="8Cv-5q-JAr"/>
+                            <constraint firstItem="x0F-Os-uoM" firstAttribute="width" secondItem="XVf-CA-j0e" secondAttribute="width" multiplier="0.7" id="KMM-m4-w7a"/>
                             <constraint firstItem="Cjn-WR-tiv" firstAttribute="height" secondItem="XVf-CA-j0e" secondAttribute="height" multiplier="0.7" id="NdW-tT-mnE"/>
                             <constraint firstItem="zSm-Tu-3ET" firstAttribute="leading" secondItem="VhW-ft-gFL" secondAttribute="leading" constant="24" id="Oem-3i-OnJ"/>
                             <constraint firstItem="5mx-tM-h88" firstAttribute="top" secondItem="VhW-ft-gFL" secondAttribute="top" constant="24" id="Prp-Z6-NuY"/>
@@ -127,7 +128,7 @@
             <objects>
                 <viewController id="zTG-Qc-OVr" customClass="ListViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R2h-8b-o54">
-                        <rect key="frame" x="0.0" y="0.0" width="385" height="764"/>
+                        <rect key="frame" x="0.0" y="0.0" width="384.5" height="764"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsN-rh-2b4">
