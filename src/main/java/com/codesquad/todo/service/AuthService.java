@@ -30,12 +30,22 @@ public class AuthService {
       Jws<Claims> claims = Jwts.parser()
           .setSigningKey(this.generateKey())
           .parseClaimsJws(token);
-
       return true;
     } catch (Exception e) {
-      log.error("Making JWT Key Error ::: {}", e.getMessage());
-
       return false;
+    }
+  }
+
+  public String getUserId(String token) {
+    try {
+      Jws<Claims> claims = Jwts.parser()
+          .setSigningKey(this.generateKey())
+          .parseClaimsJws(token);
+
+      return claims.getBody().get("userId").toString();
+    } catch (Exception e) {
+      //      throw new UnauthorizedException();
+      return "";
     }
   }
 
