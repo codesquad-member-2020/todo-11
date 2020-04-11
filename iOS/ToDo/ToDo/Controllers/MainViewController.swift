@@ -10,8 +10,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let columnInformationManager = ColumnInformationManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
