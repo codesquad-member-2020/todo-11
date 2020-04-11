@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -30,7 +29,6 @@ public class DevController {
   NoteService noteService;
 
   @ApiOperation(value = "", notes = "Get all notes")
-  @ResponseStatus(HttpStatus.OK)
   @GetMapping("/note")
   public ApiResponse getAllNote() {
     return new ApiResponse(SuccessMessages.SUCCESS, noteService.getAll());
