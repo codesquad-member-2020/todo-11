@@ -10,4 +10,5 @@ public class ErrorMessages {
   public static final String DB_ACTION_EXECUTION_EXCEPTION = "DB 입력에 실패하였습니다";
 
   public static final String NO_SUCH_NOTE_OF_REQUEST_ID = "요청 ID 의 NOTE 를 찾을 수 없습니다";
+  public static final String UNAUTHORIZED_EXCEPTION = "로그인이 필요합니다";
 }

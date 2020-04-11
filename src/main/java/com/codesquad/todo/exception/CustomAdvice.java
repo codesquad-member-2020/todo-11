@@ -48,4 +48,11 @@ public class CustomAdvice {
 
     return new ErrorResponse(ErrorMessages.DB_ACTION_EXECUTION_EXCEPTION, e.getMessage());
   }
+
+  @ExceptionHandler(UnauthorizedException.class)
+  @ResponseStatus(HttpStatus.UNAUTHORIZED)
+  public ErrorResponse handleUnauthorizedException(UnauthorizedException e) {
+
+    return new ErrorResponse(ErrorMessages.UNAUTHORIZED_EXCEPTION, e.getMessage());
+  }
 }
