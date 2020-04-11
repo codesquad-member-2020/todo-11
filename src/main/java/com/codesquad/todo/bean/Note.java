@@ -1,5 +1,6 @@
 package com.codesquad.todo.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -30,10 +31,12 @@ public class Note implements Serializable {
 
   @Null
   @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+  @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
   private LocalDateTime createdAt;
 
   @Null
   @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+  @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
   private LocalDateTime updatedAt;
 
   @NotBlank // login 구현 후 @Null 로 변경합니다
@@ -47,8 +50,8 @@ public class Note implements Serializable {
   }
 
   public void patch(Note note) {
-    if (!ObjectUtils.isEmpty(note.columnName)) {
-      columnName = note.columnName;
+    if (!ObjectUtils.isEmpty(note.categoryId)) {
+      categoryId = note.categoryId;
     }
 
     if (!ObjectUtils.isEmpty(note.content)) {
