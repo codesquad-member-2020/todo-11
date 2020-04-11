@@ -47,9 +47,9 @@ public class NoteService {
     return result;
   }
 
-  public Map<String, Object> getSpecificColumn(String columnName) {
+  public Map<String, Object> getSpecificCategory(int categoryId) {
     Map<String, Object> result = new HashMap<>();
-    result.put("notes", noteRepository.findAllByColumnNameAndDeletedFalse(columnName));
+    result.put("notes", noteRepository.findAllByCategoryAndDeletedFalse(categoryId));
 
     return result;
   }

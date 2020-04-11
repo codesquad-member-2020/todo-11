@@ -1,6 +1,5 @@
 package com.codesquad.todo.bean;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +8,7 @@ import org.springframework.util.ObjectUtils;
 
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -21,9 +21,9 @@ public class Note implements Serializable {
   @Null
   private Long id;
 
-  @NotBlank
+  @NotNull
   @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-  private String columnName;
+  private Long categoryId;
 
   @NotBlank
   private String content;
@@ -37,10 +37,9 @@ public class Note implements Serializable {
   private LocalDateTime updatedAt;
 
   @NotBlank // login 구현 후 @Null 로 변경합니다
-  private String userId;
+  private String user;
 
   @AssertFalse
-  @JsonIgnore
   private boolean deleted;
 
   public void delete() {

@@ -10,15 +10,9 @@ public interface NoteRepository extends CrudRepository<Note, Long> {
 
   List<Note> findAll();
 
-  @Query(
-      "SELECT note.id, note.column_name, note.content, note.created_at, note.updated_at, note.user_id, note.deleted " +
-      "FROM note " +
-      "WHERE column_name = :columnName " +
-      "AND note.deleted = FALSE")
-  List<Note> findAllByColumnNameAndDeletedFalse(String columnName);
-
-  @Query("SELECT DISTINCT note.column_name " +
-         "FROM note " +
-         "WHERE note.deleted = FALSE")
-  List<String> findDistinctByColumnNameAndDeletedFalse();
+  @Query("SELECT t.id, t.user, t.category_id, t.content, t.created_at, t.updated_at, t.next, t.deleted " +
+         "FROM note t " +
+         "WHERE t.category_id = :categoryId " +
+         "AND t.deleted = FALSE")
+  List<Note> findAllByCategoryAndDeletedFalse(int categoryId);
 }
