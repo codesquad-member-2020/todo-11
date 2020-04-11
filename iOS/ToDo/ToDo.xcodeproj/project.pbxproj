@@ -10,6 +10,7 @@
 		78143A80243F4E0F000DE8CD /* ColumnInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78143A7F243F4E0F000DE8CD /* ColumnInformation.swift */; };
 		78143A84243F4F5E000DE8CD /* ColumnInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78143A83243F4F5E000DE8CD /* ColumnInformationManager.swift */; };
 		781C2AC6244229B800EED845 /* EditorTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C2AC5244229B800EED845 /* EditorTextFieldDelegate.swift */; };
+		781C2AC82442300500EED845 /* EditorTextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 781C2AC72442300500EED845 /* EditorTextViewDelegate.swift */; };
 		783C61D6243C7226005E6097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C61D5243C7226005E6097 /* AppDelegate.swift */; };
 		783C61D8243C7226005E6097 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783C61D7243C7226005E6097 /* SceneDelegate.swift */; };
 		783C61DD243C7226005E6097 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 783C61DB243C7226005E6097 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		78143A7F243F4E0F000DE8CD /* ColumnInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnInformation.swift; sourceTree = "<group>"; };
 		78143A83243F4F5E000DE8CD /* ColumnInformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnInformationManager.swift; sourceTree = "<group>"; };
 		781C2AC5244229B800EED845 /* EditorTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTextFieldDelegate.swift; sourceTree = "<group>"; };
+		781C2AC72442300500EED845 /* EditorTextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTextViewDelegate.swift; sourceTree = "<group>"; };
 		783C61D2243C7226005E6097 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		783C61D5243C7226005E6097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		783C61D7243C7226005E6097 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				786721C2243CAEF9003441CC /* ListTableViewDataSource.swift */,
 				786721C8243CE4B4003441CC /* EditorViewController.swift */,
 				781C2AC5244229B800EED845 /* EditorTextFieldDelegate.swift */,
+				781C2AC72442300500EED845 /* EditorTextViewDelegate.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				78143A84243F4F5E000DE8CD /* ColumnInformationManager.swift in Sources */,
 				786721C3243CAEF9003441CC /* ListTableViewDataSource.swift in Sources */,
 				781C2AC6244229B800EED845 /* EditorTextFieldDelegate.swift in Sources */,
+				781C2AC82442300500EED845 /* EditorTextViewDelegate.swift in Sources */,
 				786721BB243CAC06003441CC /* MainViewController.swift in Sources */,
 				783C61D6243C7226005E6097 /* AppDelegate.swift in Sources */,
 				78A65F0A243DEA670011D7B2 /* TaskInformationManager.swift in Sources */,

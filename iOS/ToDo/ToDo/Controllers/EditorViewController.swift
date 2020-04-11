@@ -21,11 +21,12 @@ class EditorViewController: UIViewController {
     }
     
     private let textFieldDelegate = EditorTextFieldDelegate()
+    private let textViewDelegate = EditorTextViewDelegate()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureTitleTextField()
+        configureContentTextView()
     }
     
     func configureTitleTextField() {
@@ -33,6 +34,13 @@ class EditorViewController: UIViewController {
         textFieldDelegate.titleTextField = titleTextField
         textFieldDelegate.contentTextView = contentTextView
         titleTextField.becomeFirstResponder()
+    }
+    
+    func configureContentTextView() {
+        contentTextView.delegate = textViewDelegate
+        textViewDelegate.contentTextView = contentTextView
+        contentTextView.text = "Content"
+        contentTextView.textColor = .lightGray
     }
 
 }

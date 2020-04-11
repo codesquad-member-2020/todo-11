@@ -24,7 +24,6 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureHeader()
         configureTableView()
         request()

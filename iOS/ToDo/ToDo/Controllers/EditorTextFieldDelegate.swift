@@ -17,6 +17,8 @@ class EditorTextFieldDelegate: NSObject, UITextFieldDelegate {
         if let count = titleTextField?.text?.count, count == 0 { return false }
         titleTextField?.resignFirstResponder()
         contentTextView?.becomeFirstResponder()
+        contentTextView?.text = ""
+        contentTextView?.textColor = .black
         return true
     }
     
