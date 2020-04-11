@@ -33,6 +33,6 @@ DROP TABLE IF EXISTS history;
 # );
 #
 ALTER TABLE note
-    ADD FOREIGN KEY (category) REFERENCES category (id);
+    ADD FOREIGN KEY (category_id) REFERENCES category (id);
 
 # ALTER TABLE note ADD FOREIGN KEY (id) REFERENCES note (NEXT);

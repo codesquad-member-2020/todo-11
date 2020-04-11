@@ -4,6 +4,7 @@ import com.codesquad.todo.bean.ApiResponse;
 import com.codesquad.todo.bean.Note;
 import com.codesquad.todo.message.SuccessMessages;
 import com.codesquad.todo.service.NoteService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,37 +17,31 @@ import javax.validation.Valid;
 @Slf4j
 @RestController
 @Validated
+@Api(tags = "Prod")
 @RequestMapping("/api/notes")
 public class NoteController {
 
   @Autowired
   NoteService noteService;
 
-  @ApiOperation(value = "", notes = "Get all notes", tags = "Mockup")
-  @ResponseStatus(HttpStatus.OK)
-  @GetMapping
-  public ApiResponse getAllNotes() {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getAllNotes());
-  }
-
-  @ApiOperation(value = "", notes = "Create note", tags = "Dev")
+  @ApiOperation(value = "", notes = "Create note")
   @ResponseStatus(HttpStatus.OK)
   @PostMapping
-  public ApiResponse createNote(@Valid @RequestBody Note note) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.createNote(note));
+  public ApiResponse create(@Valid @RequestBody Note note) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.create(note));
   }
 
-  @ApiOperation(value = "", notes = "Soft delete note", tags = "Dev")
+  @ApiOperation(value = "", notes = "Soft delete note")
   @ResponseStatus(HttpStatus.OK)
   @DeleteMapping
-  public ApiResponse deleteNote(@RequestParam Long id) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.deleteNote(id));
+  public ApiResponse delete(@RequestParam Long id) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.delete(id));
   }
 
-  @ApiOperation(value = "", notes = "Get all notes about specific column", tags = "Dev")
+  @ApiOperation(value = "", notes = "Get all notes about specific category")
   @ResponseStatus(HttpStatus.OK)
-  @GetMapping("/column")
-  public ApiResponse getSpecificColumnNotes(@RequestParam String columnName) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getSpecificColumnNotes(columnName));
+  @GetMapping("/category")
+  public ApiResponse getSpecificCategory(@RequestParam int categoryId) {
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getSpecificCategory(categoryId));
   }
 }
