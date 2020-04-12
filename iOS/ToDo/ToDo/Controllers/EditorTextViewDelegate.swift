@@ -26,4 +26,10 @@ class EditorTextViewDelegate: NSObject, UITextViewDelegate {
         }
     }
     
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        guard let textViewText = textView.text else { return true }
+        let count = textViewText.count + text.count
+        return count <= 500
+    }
+    
 }
