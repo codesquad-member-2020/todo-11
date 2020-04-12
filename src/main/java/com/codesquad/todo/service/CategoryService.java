@@ -1,5 +1,6 @@
 package com.codesquad.todo.service;
 
+import com.codesquad.todo.bean.Category;
 import com.codesquad.todo.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,13 @@ public class CategoryService {
   public Map<String, Object> getAllDeletedFalse() {
     Map<String, Object> result = new HashMap<>();
     result.put("category", categoryRepository.findAllByDeletedFalse());
+
+    return result;
+  }
+
+  public Map<String, Object> create(Category category) {
+    Map<String, Object> result = new HashMap<>();
+    result.put("note", categoryRepository.save(category));
 
     return result;
   }
