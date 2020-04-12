@@ -10,6 +10,7 @@ import UIKit
 
 class EditorViewController: UIViewController {
 
+    @IBOutlet weak var addTaskButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
@@ -18,6 +19,16 @@ class EditorViewController: UIViewController {
     }
     @IBAction func touchUpCancelButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func textFieldEditingDidChange(_ sender: UITextField) {
+        if let text = titleTextField.text, !text.isEmpty {
+            addTaskButton.isEnabled = true
+            addTaskButton.setTitleColor(.systemBlue, for: .normal)
+        } else {
+            addTaskButton.isEnabled = false
+            addTaskButton.setTitleColor(.darkGray, for: .normal)
+        }
     }
     
     private let textFieldDelegate = EditorTextFieldDelegate()

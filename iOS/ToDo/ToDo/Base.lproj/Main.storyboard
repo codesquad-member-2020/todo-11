@@ -78,9 +78,11 @@
                                     <action selector="touchUpCancelButton:" destination="s3w-fT-Y6j" eventType="touchUpInside" id="uro-qJ-apP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mx-tM-h88">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mx-tM-h88">
                                 <rect key="frame" x="625" y="24" width="63" height="30"/>
-                                <state key="normal" title="Add Task"/>
+                                <state key="normal" title="Add Task">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="touchUpAddTaskButton:" destination="s3w-fT-Y6j" eventType="touchUpInside" id="6UP-N9-dfb"/>
                                 </connections>
@@ -89,6 +91,9 @@
                                 <rect key="frame" x="100" y="100" width="498.5" height="42"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEditingDidChange:" destination="s3w-fT-Y6j" eventType="editingChanged" id="YOa-yG-04N"/>
+                                </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Cjn-WR-tiv">
                                 <rect key="frame" x="100" y="150" width="498.5" height="556"/>
@@ -115,6 +120,7 @@
                         <viewLayoutGuide key="safeArea" id="VhW-ft-gFL"/>
                     </view>
                     <connections>
+                        <outlet property="addTaskButton" destination="5mx-tM-h88" id="TzG-93-C8d"/>
                         <outlet property="contentTextView" destination="Cjn-WR-tiv" id="xAR-8Z-ykO"/>
                         <outlet property="titleTextField" destination="x0F-Os-uoM" id="FJ7-oz-Z4Z"/>
                     </connections>
