@@ -48,4 +48,14 @@ class TaskInformationManager {
         dataTask.resume()
     }
     
+    func deleteTask(identifier: Int) {
+        guard let url = URL(string: "http://15.165.223.140:8080/api/notes?id=\(identifier)") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let session = URLSession(configuration: .default)
+        let dataTask = session.dataTask(with: request)
+        dataTask.resume()
+    }
+    
 }

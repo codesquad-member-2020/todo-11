@@ -22,6 +22,17 @@ class ListTableViewDataSource: NSObject, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let tasks = taskInformationManager.tasks else { return }
+            let identifier = tasks[indexPath.row].identifier
+            taskInformationManager.deleteTask(identifier: identifier)
+            taskInformationManager.tasks?.remove(at: indexPath.row)
+            taskInformationManager.tasksCount! -= 1
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
     func request(column: Column, _ completion: @escaping () -> ()) {
         taskInformationManager.request(column: column) {
             completion()
