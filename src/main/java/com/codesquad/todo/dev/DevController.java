@@ -1,6 +1,7 @@
 package com.codesquad.todo.dev;
 
 import com.codesquad.todo.bean.ApiResponse;
+import com.codesquad.todo.message.ErrorMessages;
 import com.codesquad.todo.message.SuccessMessages;
 import com.codesquad.todo.service.DevService;
 import io.swagger.annotations.Api;
@@ -9,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
@@ -47,5 +49,13 @@ public class DevController {
   @GetMapping("/history")
   public ApiResponse getAllHistory() {
     return new ApiResponse(SuccessMessages.SUCCESS, devService.getAllHistory());
+  }
+
+  @ApiOperation(value = "", notes = "Verify JWT token")
+  @GetMapping("/verifyToken")
+  public ApiResponse verifyToken(@RequestParam String token) {
+    return (devService.verifyToken(token))
+           ? new ApiResponse(SuccessMessages.SUCCESS, null)
+           : new ApiResponse(ErrorMessages.ERROR, null);
   }
 }

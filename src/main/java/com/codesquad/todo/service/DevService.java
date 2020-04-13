@@ -4,6 +4,7 @@ import com.codesquad.todo.bean.Category;
 import com.codesquad.todo.repository.CategoryRepository;
 import com.codesquad.todo.repository.HistoryRepository;
 import com.codesquad.todo.repository.NoteRepository;
+import com.codesquad.todo.util.TokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -47,6 +48,10 @@ public class DevService {
     result.put("history", historyRepository.findAll());
 
     return result;
+  }
+
+  public boolean verifyToken(String token) {
+    return TokenUtil.verify(token);
   }
 
   public Map<String, Object> init() {

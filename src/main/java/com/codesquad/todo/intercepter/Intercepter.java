@@ -2,6 +2,7 @@ package com.codesquad.todo.intercepter;
 
 import com.codesquad.todo.message.AuthMessages;
 import com.codesquad.todo.service.AuthService;
+import com.codesquad.todo.util.TokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
@@ -25,7 +26,7 @@ public class Intercepter extends HandlerInterceptorAdapter {
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception
   {
-    log.debug("### preHandle userId : {}", authService.getUserId(request.getHeader(AuthMessages.HEADER_AUTH)));
+    log.debug("### preHandle userId : {}", TokenUtil.getUserId(AuthMessages.HEADER_AUTH));
     return super.preHandle(request, response, handler);
   }
 
@@ -41,7 +42,7 @@ public class Intercepter extends HandlerInterceptorAdapter {
       throws Exception
   {
     if (ObjectUtils.isEmpty(ex)) {
-      log.debug("### afterCompletion userId : {}", authService.getUserId(request.getHeader(AuthMessages.HEADER_AUTH)));
+      log.debug("### afterCompletion userId : {}", TokenUtil.getUserId(request.getHeader(AuthMessages.HEADER_AUTH)));
 
     }
     super.afterCompletion(request, response, handler, ex);
