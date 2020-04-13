@@ -3,13 +3,13 @@ import { getElement } from '../src/util/dom.js'
 const stateRender = (columnState) => {
     let columnHTML = '';
 
-    columnState.contents.columns.forEach((column) => {
+    columnState.contents.category.forEach((column) => {
         columnHTML += `
-            <div class="column ${column}">
+            <div class="column ${column.name}">
                 <div class="column-menu">
                     <div class="column-menu_left">
                         <span class="column-menu_count"></span>
-                        <span class="column-menu_title">${column}</span>
+                        <span class="column-menu_title">${column.name}</span>
                     </div>
                     <div class="column-menu_right">
                         <button class="column-menu_addBtn">+</button>
@@ -18,7 +18,7 @@ const stateRender = (columnState) => {
                 </div>
                 <div class="add-note">
                     <input class="add-note_input" type="text" placeholder="Enter a note">
-                    <button class="add-note_addBtn">Add</button>
+                    <button class="add-note_addBtn" disabled="disabled">Add</button>
                     <button class="add-note_cancleBtn">Cancle</button>
                 </div>
                 <div class="note-wrap"></div>
