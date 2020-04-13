@@ -71,3 +71,12 @@ INSERT INTO note(category_id, content, user, deleted)
 VALUES (3, 'sally 가 다했어 2', 'sally', TRUE);
 INSERT INTO note(category_id, content, user, deleted)
 VALUES (3, 'sally 가 다했어 3', 'sally', TRUE);
+
+INSERT INTO history(user, content)
+VALUES ('dan', 'get All Cateroy');
+
+INSERT INTO history(user, content)
+VALUES ('sally', 'get 다했어 notes');
+
+INSERT INTO history(user, content)
+VALUES ('jinie', 'get 해야할일 Cateroy');

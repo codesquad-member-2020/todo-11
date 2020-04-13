@@ -2,6 +2,7 @@ package com.codesquad.todo.service;
 
 import com.codesquad.todo.bean.Category;
 import com.codesquad.todo.repository.CategoryRepository;
+import com.codesquad.todo.repository.HistoryRepository;
 import com.codesquad.todo.repository.NoteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,14 @@ public class DevService {
 
   private final NoteRepository noteRepository;
   private final CategoryRepository categoryRepository;
+  private final HistoryRepository historyRepository;
 
-  public DevService(NoteRepository noteRepository, CategoryRepository categoryRepository) {
+  public DevService(NoteRepository noteRepository, CategoryRepository categoryRepository,
+                    HistoryRepository historyRepository)
+  {
     this.noteRepository = noteRepository;
     this.categoryRepository = categoryRepository;
+    this.historyRepository = historyRepository;
   }
 
   public Map<String, Object> getAllNote() {
@@ -32,7 +37,14 @@ public class DevService {
 
   public Map<String, Object> getAllCategory() {
     Map<String, Object> result = new HashMap<>();
-    result.put("notes", categoryRepository.findAll());
+    result.put("category", categoryRepository.findAll());
+
+    return result;
+  }
+
+  public Map<String, Object> getAllHistory() {
+    Map<String, Object> result = new HashMap<>();
+    result.put("history", historyRepository.findAll());
 
     return result;
   }
