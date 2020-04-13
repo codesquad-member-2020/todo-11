@@ -24,12 +24,12 @@ CREATE TABLE category
 
 DROP TABLE IF EXISTS history;
 
-# CREATE TABLE history
-# (
-#     id      BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-#     user_id BIGINT             NOT NULL,
-#     content VARCHAR(1000)      NOT NULL,
-#     deleted BOOLEAN            NOT NULL DEFAULT FALSE
-# );
-#
+CREATE TABLE history
+(
+    id         BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user       VARCHAR(50)        NOT NULL,
+    content    VARCHAR(1000)      NOT NULL,
+    created_at TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 # ALTER TABLE note ADD FOREIGN KEY (id) REFERENCES note (NEXT);

@@ -4,6 +4,7 @@ import com.codesquad.todo.message.AuthMessages;
 import com.codesquad.todo.service.AuthService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -39,6 +40,10 @@ public class Intercepter extends HandlerInterceptorAdapter {
   public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
       throws Exception
   {
+    if (ObjectUtils.isEmpty(ex)) {
+      log.debug("### afterCompletion userId : {}", authService.getUserId(request.getHeader(AuthMessages.HEADER_AUTH)));
+
+    }
     super.afterCompletion(request, response, handler, ex);
   }
 }

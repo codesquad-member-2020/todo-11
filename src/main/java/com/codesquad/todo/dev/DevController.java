@@ -42,4 +42,10 @@ public class DevController {
   public ApiResponse getAllCategory() {
     return new ApiResponse(SuccessMessages.SUCCESS, devService.getAllCategory());
   }
+
+  @ApiOperation(value = "", notes = "Get all history")
+  @GetMapping("/history")
+  public ApiResponse getAllHistory() {
+    return new ApiResponse(SuccessMessages.SUCCESS, devService.getAllHistory());
+  }
 }
