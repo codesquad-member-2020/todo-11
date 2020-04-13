@@ -16,4 +16,16 @@ public class Category implements Serializable {
   private Long id;
   private String name;
   private boolean deleted;
+
+  public Category() {
+  }
+
+  public Category(String name) {
+    this.name = name;
+  }
+
+  public Category(String name, boolean deleted) {
+    this.name = name;
+    this.deleted = deleted;
+  }
 }
