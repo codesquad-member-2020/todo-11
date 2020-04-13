@@ -28,7 +28,10 @@ CREATE TABLE history
 (
     id         BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user       VARCHAR(50)        NOT NULL,
-    content    VARCHAR(1000)      NOT NULL,
+    behavior   VARCHAR(1000)      NOT NULL,
+    note       BIGINT,
+    move_from  BIGINT,
+    move_to    BIGINT,
     created_at TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

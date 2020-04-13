@@ -21,4 +21,12 @@ public class History implements Serializable {
 
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime createdAt;
+
+  public History() {
+  }
+
+  public History(String user, String content) {
+    this.user = user;
+    this.content = content;
+  }
 }

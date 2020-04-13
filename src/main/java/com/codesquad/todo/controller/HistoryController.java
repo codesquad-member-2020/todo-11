@@ -32,11 +32,4 @@ public class HistoryController {
 
     return new ApiResponse(SuccessMessages.SUCCESS, historyService.getAllByUser(userId));
   }
-
-  //  @ApiOperation(value = "", notes = "Create category")
-  //  @PostMapping
-  //  public ResponseEntity<ApiResponse> create(@RequestBody Category category) {
-  //    return new ResponseEntity<>(
-  //        new ApiResponse(SuccessMessages.SUCCESS, categoryService.create(category)), HttpStatus.OK);
-  //  }
 }
