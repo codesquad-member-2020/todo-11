@@ -21,6 +21,10 @@ class MainViewController: UIViewController {
             listViewController.column = .inProgress
         } else if segue.identifier == doneSegue, let listViewController = segue.destination as? ListViewController {
             listViewController.column = .done
+        } else if segue.identifier == editorSegue, let editorViewController = segue.destination as? EditorViewController {
+            if let column = sender as? Column {
+                editorViewController.column = column
+            }
         }
     }
 

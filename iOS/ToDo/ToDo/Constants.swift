@@ -13,3 +13,6 @@ let inProgressSegue = "inProgressSegue"
 let doneSegue = "doneSegue"
 let editorSegue = "editorSegue"
 let listTableViewCell = "listTableViewCell"
+
+let addTaskNotification = Notification.Name("addTaskNotification")
+let addTaskInfoKey = "column"

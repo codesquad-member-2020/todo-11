@@ -14,9 +14,23 @@ class EditorViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
+    let taskInformationManager = TaskInformationManager()
+    var column: Column?
+    
     @IBAction func touchUpAddTaskButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        guard let column = column else { return }
+        guard let content = titleTextField.text else { return }
+        taskInformationManager.addTask(column: column, content: content) {
+            DispatchQueue.main.async {
+                let columnInfo: [String : Column] = [addTaskInfoKey: column]
+                NotificationCenter.default.post(name: addTaskNotification,
+                                                object: nil,
+                                                userInfo: columnInfo)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
+    
     @IBAction func touchUpCancelButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
