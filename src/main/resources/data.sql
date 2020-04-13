@@ -14,16 +14,16 @@ INSERT INTO category(name, deleted)
 VALUES ("지워진2", TRUE);
 
 
-INSERT INTO note(category_id, content, user)
-VALUES (1, 'dan 이 해야할 일 1 \n 2번쨰 줄', 'dan');
-INSERT INTO note(category_id, content, user)
-VALUES (1, 'dan 이 해야할 일 2', 'dan');
-INSERT INTO note(category_id, content, user)
-VALUES (1, 'dan 이 해야할 일 3', 'dan');
-INSERT INTO note(category_id, content, user)
-VALUES (1, '미슈가 해야할 일 4', '미슈');
-INSERT INTO note(category_id, content, user)
-VALUES (1, '미슈가 해야할 일 5', '미슈');
+INSERT INTO note(category_id, content, user, next)
+VALUES (1, 'dan 이 해야할 일 1 \n 2번쨰 줄', 'dan', 2);
+INSERT INTO note(category_id, content, user, next)
+VALUES (1, 'dan 이 해야할 일 2', 'dan', 3);
+INSERT INTO note(category_id, content, user, next)
+VALUES (1, 'dan 이 해야할 일 3', 'dan', 4);
+INSERT INTO note(category_id, content, user, next)
+VALUES (1, '미슈가 해야할 일 4', '미슈', 5);
+INSERT INTO note(category_id, content, user, next)
+VALUES (1, '미슈가 해야할 일 5', '미슈', 6);
 INSERT INTO note(category_id, content, user)
 VALUES (1, '미슈가 해야할 일 6', '미슈');
 
