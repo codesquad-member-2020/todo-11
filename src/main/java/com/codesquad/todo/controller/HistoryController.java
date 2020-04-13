@@ -1,13 +1,11 @@
 package com.codesquad.todo.controller;
 
 import com.codesquad.todo.bean.ApiResponse;
-import com.codesquad.todo.message.SuccessMessages;
-import com.codesquad.todo.service.CategoryService;
+import com.codesquad.todo.service.HistoryService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,14 +20,16 @@ import javax.servlet.http.HttpServletRequest;
 public class HistoryController {
 
   @Autowired
-  CategoryService categoryService;
+  HistoryService historyService;
 
   @ApiOperation(value = "", notes = "Get all category (only login user)")
   @GetMapping
   public ResponseEntity<ApiResponse> getAllByUser(HttpServletRequest request) {
     log.debug("### request : {}", request);
-    return new ResponseEntity<>(
-        new ApiResponse(SuccessMessages.SUCCESS, categoryService.getAllDeletedFalse()), HttpStatus.OK);
+    //    return new ResponseEntity<>(
+    //        new ApiResponse(SuccessMessages.SUCCESS, categoryService.getAllDeletedFalse()), HttpStatus.OK);
+
+    return null;
   }
 
   //  @ApiOperation(value = "", notes = "Create category")
