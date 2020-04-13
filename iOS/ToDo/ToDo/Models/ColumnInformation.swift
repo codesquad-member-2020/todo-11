@@ -21,11 +21,11 @@ struct Columns: Codable {
     
 }
 
-enum Column: String, CustomStringConvertible {
+enum Column: Int, CustomStringConvertible {
 
-    case toDo = "해야할일"
-    case inProgress = "하는중"
-    case done = "다했어"
+    case toDo = 1
+    case inProgress = 2
+    case done = 3
     
     var description: String {
         return "\(self.rawValue)"

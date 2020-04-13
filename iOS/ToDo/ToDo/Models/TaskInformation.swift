@@ -31,14 +31,16 @@ struct Task: Codable {
     let content: String
     let createdDate: String
     let updatedDate: String
-    let userId: String
+    let user: String
+    let deleted: Bool
     
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
         case content
         case createdDate = "createdAt"
         case updatedDate = "updatedAt"
-        case userId
+        case user
+        case deleted
     }
     
 }
