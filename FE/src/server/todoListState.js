@@ -3,11 +3,11 @@ import { drawColumnSection } from '../../templates/column.js'
 import { drawNoteSection } from '../../templates/note.js';
 
 export const todoListRender = async () => {
-  const columnState = await fetchJSON_GET(URL.DEV.GET_COLUMNS_API);
+  const columnState = await fetchJSON_GET(URL.PROD.GET_CATEGORY_API);
   drawColumnSection(columnState);
 
-  columnState.contents.columns.forEach(async (column) => {
-    const noteState = await fetchJSON_GET(URL.DEV.GET_SPECIFIC_COLUMN_NOTES_API + column);
+  columnState.contents.category.forEach(async (column) => {
+    const noteState = await fetchJSON_GET(URL.PROD.GET_SPECIFIC_CATEGORY_NOTE_API + column.id);
     drawNoteSection(noteState, column);
   });
 }
