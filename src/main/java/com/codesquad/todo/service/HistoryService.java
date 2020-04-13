@@ -22,7 +22,7 @@ public class HistoryService {
 
   public Map<String, Object> getAllByUser(String userId) {
     Map<String, Object> result = new HashMap<>();
-    result.put("history", historyRepository.findAll());
+    result.put("history", historyRepository.findAllByUserId(userId));
 
     return result;
   }

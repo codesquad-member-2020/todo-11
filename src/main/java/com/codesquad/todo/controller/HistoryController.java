@@ -1,12 +1,14 @@
 package com.codesquad.todo.controller;
 
 import com.codesquad.todo.bean.ApiResponse;
+import com.codesquad.todo.message.AuthMessages;
+import com.codesquad.todo.message.SuccessMessages;
 import com.codesquad.todo.service.HistoryService;
+import com.codesquad.todo.util.TokenUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,12 +26,11 @@ public class HistoryController {
 
   @ApiOperation(value = "", notes = "Get all category (only login user)")
   @GetMapping
-  public ResponseEntity<ApiResponse> getAllByUser(HttpServletRequest request) {
-    log.debug("### request : {}", request);
-    //    return new ResponseEntity<>(
-    //        new ApiResponse(SuccessMessages.SUCCESS, categoryService.getAllDeletedFalse()), HttpStatus.OK);
+  public ApiResponse getAllByUser(HttpServletRequest request) {
+    String token = request.getHeader(AuthMessages.HEADER_AUTH);
+    String userId = TokenUtil.getUserId(token);
 
-    return null;
+    return new ApiResponse(SuccessMessages.SUCCESS, historyService.getAllByUser(userId));
   }
 
   //  @ApiOperation(value = "", notes = "Create category")

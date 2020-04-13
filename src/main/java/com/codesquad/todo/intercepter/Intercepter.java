@@ -16,12 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 @Component
 public class Intercepter extends HandlerInterceptorAdapter {
 
-  private final AuthService authService;
-
-  public Intercepter(AuthService authService) {
-    this.authService = authService;
-  }
-
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception
