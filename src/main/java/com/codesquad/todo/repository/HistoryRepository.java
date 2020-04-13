@@ -10,7 +10,7 @@ public interface HistoryRepository extends CrudRepository<History, Long> {
 
   List<History> findAll();
 
-  @Query("SELECT t.id, t.user, t.content, t.created_at " +
+  @Query("SELECT t.id, t.user, t.method, t.uri, t.param, t.created_at " +
          "FROM history t " +
          "WHERE user = :userId")
   List<History> findAllByUserId(String userId);
