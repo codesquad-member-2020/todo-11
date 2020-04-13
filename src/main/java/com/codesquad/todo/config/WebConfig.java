@@ -1,7 +1,7 @@
 package com.codesquad.todo.config;
 
 import com.codesquad.todo.intercepter.Intercepter;
-import com.codesquad.todo.service.AuthService;
+import com.codesquad.todo.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.*;
 public class WebConfig implements WebMvcConfigurer {
 
   @Autowired
-  AuthService authService;
+  HistoryService historyService;
 
   @Override
   public void addCorsMappings(CorsRegistry registry) {
@@ -29,7 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
 
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
-    registry.addInterceptor(new Intercepter(authService))
+    registry.addInterceptor(new Intercepter(historyService))
         .addPathPatterns("/api/**");
   }
 }

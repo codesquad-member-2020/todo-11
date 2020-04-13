@@ -48,7 +48,7 @@ public class TokenUtil {
           .toString();
     } catch (Exception e) {
       //      throw new UnauthorizedException();
-      return "";
+      return "anonymous";
     }
   }
 

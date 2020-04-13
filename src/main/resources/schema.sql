@@ -28,7 +28,9 @@ CREATE TABLE history
 (
     id         BIGINT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user       VARCHAR(50)        NOT NULL,
-    content    VARCHAR(1000)      NOT NULL,
+    method     VARCHAR(100)       NOT NULL,
+    uri        VARCHAR(100)       NOT NULL,
+    param       VARCHAR(1000),
     created_at TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
