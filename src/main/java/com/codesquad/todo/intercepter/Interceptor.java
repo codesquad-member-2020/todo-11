@@ -14,11 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @Component
-public class Intercepter extends HandlerInterceptorAdapter {
+public class Interceptor extends HandlerInterceptorAdapter {
 
   private final HistoryService historyService;
 
-  public Intercepter(HistoryService historyService) {
+  public Interceptor(HistoryService historyService) {
     this.historyService = historyService;
   }
 
