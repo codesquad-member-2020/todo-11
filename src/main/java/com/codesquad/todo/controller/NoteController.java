@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Slf4j
@@ -25,7 +26,8 @@ public class NoteController {
 
   @ApiOperation(value = "", notes = "Create note")
   @PostMapping
-  public ApiResponse create(@Valid @RequestBody Note note) {
+  public ApiResponse create(@Valid @RequestBody Note note, HttpServletRequest request) {
+    request.setAttribute("body", note);
     return new ApiResponse(SuccessMessages.SUCCESS, noteService.create(note));
   }
 
@@ -37,7 +39,8 @@ public class NoteController {
 
   @ApiOperation(value = "", notes = "Patch note")
   @PatchMapping
-  public ApiResponse patch(@RequestBody Note note) {
+  public ApiResponse patch(@RequestBody Note note, HttpServletRequest request) {
+    request.setAttribute("body", note);
     return new ApiResponse(SuccessMessages.SUCCESS, noteService.patch(note));
   }
 

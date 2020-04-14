@@ -43,7 +43,7 @@ public class Intercepter extends HandlerInterceptorAdapter {
   {
     if (ObjectUtils.isEmpty(ex)) {
       log.debug("### afterCompletion userId : {}", TokenUtil.getUserId(request.getHeader(AuthMessages.HEADER_AUTH)));
-
+      log.debug("### afterCompletion : {}", request.getAttribute("body"));
       historyService.create(request);
     }
     super.afterCompletion(request, response, handler, ex);

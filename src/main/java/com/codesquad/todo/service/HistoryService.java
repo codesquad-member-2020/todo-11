@@ -22,11 +22,35 @@ public class HistoryService {
 
   public void create(HttpServletRequest request) {
     log.debug("### history create : {}", request.toString());
+    log.debug("### request.getQueryString() : {}", request.getQueryString());
+
+    if ("POST".equalsIgnoreCase(request.getMethod())) {
+      log.debug("### getReader!!");
+      log.debug("### getReader : {}", request.getAttribute("body"));
+    }
 
     String userId = TokenUtil.getUserId(request.getHeader(AuthMessages.HEADER_AUTH));
     String method = request.getMethod();
     String uri = request.getRequestURI();
 
+    StringBuilder sb = new StringBuilder();
+    sb.append("{parameter: ").append(getParameter(request))
+        .append(", body: ").append(getBody(request))
+        .append("}");
+    String param = sb.toString();
+
+    History history = new History(userId, method, uri, param);
+    historyRepository.save(history);
+  }
+
+  public Map<String, Object> getAllByUser(String userId) {
+    Map<String, Object> result = new HashMap<>();
+    result.put("history", historyRepository.findAllByUserId(userId));
+
+    return result;
+  }
+
+  private String getParameter(HttpServletRequest request) {
     Enumeration params = request.getParameterNames();
     StringBuilder sb = new StringBuilder();
 
@@ -41,16 +65,10 @@ public class HistoryService {
 
     sb.insert(0, "{").append("}");
 
-    String param = sb.toString();
-
-    History history = new History(userId, method, uri, param);
-    historyRepository.save(history);
+    return sb.toString();
   }
 
-  public Map<String, Object> getAllByUser(String userId) {
-    Map<String, Object> result = new HashMap<>();
-    result.put("history", historyRepository.findAllByUserId(userId));
-
-    return result;
+  private String getBody(HttpServletRequest request) {
+    return "{" + request.getAttribute("body") + "}";
   }
 }
