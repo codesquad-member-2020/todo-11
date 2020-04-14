@@ -62,6 +62,10 @@ INSERT INTO note(category_id, content, user, rank)
 VALUES (3, 'jinie 가 다했어 5', 'jinie', 5);
 INSERT INTO note(category_id, content, user, rank)
 VALUES (3, 'jinie 가 다했어 6', 'jinie', 6);
+INSERT INTO note(category_id, content, user, rank)
+VALUES (3, 'anonymous가 다했어 5', 'anonymous', 10);
+INSERT INTO note(category_id, content, user, rank)
+VALUES (3, 'anonymous가 다했어 6', 'anonymous', 11);
 
 INSERT INTO note(category_id, content, user, deleted, rank)
 VALUES (1, 'dan 이 해야할 일 1', 'dan', TRUE, 7);
