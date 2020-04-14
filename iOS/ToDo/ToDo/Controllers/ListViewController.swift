@@ -19,6 +19,7 @@ class ListViewController: UIViewController {
     }
     
     private var tableViewDataSource = ListTableViewDataSource()
+    private var tableViewDelegate = ListTableViewDelegate()
     private let tableViewCell = UINib(nibName: "ListTableViewCell", bundle: nil)
     var column: Column?
     
@@ -42,6 +43,7 @@ class ListViewController: UIViewController {
     
     func configureTableView() {
         tableView.dataSource = tableViewDataSource
+        tableView.delegate = tableViewDelegate
         tableView.register(tableViewCell, forCellReuseIdentifier: listTableViewCell)
     }
     

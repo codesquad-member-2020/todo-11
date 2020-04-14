@@ -25,6 +25,7 @@
 		786721C9243CE4B4003441CC /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786721C8243CE4B4003441CC /* EditorViewController.swift */; };
 		78A65F08243DD0EE0011D7B2 /* TaskInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A65F07243DD0EE0011D7B2 /* TaskInformation.swift */; };
 		78A65F0A243DEA670011D7B2 /* TaskInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A65F09243DEA670011D7B2 /* TaskInformationManager.swift */; };
+		78CAF44C244568C8002FAB93 /* ListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAF44B244568C8002FAB93 /* ListTableViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		786721C8243CE4B4003441CC /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		78A65F07243DD0EE0011D7B2 /* TaskInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInformation.swift; sourceTree = "<group>"; };
 		78A65F09243DEA670011D7B2 /* TaskInformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInformationManager.swift; sourceTree = "<group>"; };
+		78CAF44B244568C8002FAB93 /* ListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				786721BA243CAC06003441CC /* MainViewController.swift */,
 				786721BC243CAC2C003441CC /* ListViewController.swift */,
 				786721C2243CAEF9003441CC /* ListTableViewDataSource.swift */,
+				78CAF44B244568C8002FAB93 /* ListTableViewDelegate.swift */,
 				786721C8243CE4B4003441CC /* EditorViewController.swift */,
 				781C2AC5244229B800EED845 /* EditorTextFieldDelegate.swift */,
 				781C2AC72442300500EED845 /* EditorTextViewDelegate.swift */,
@@ -211,6 +214,7 @@
 				786721C5243CAF31003441CC /* Constants.swift in Sources */,
 				783C61D8243C7226005E6097 /* SceneDelegate.swift in Sources */,
 				78A65F08243DD0EE0011D7B2 /* TaskInformation.swift in Sources */,
+				78CAF44C244568C8002FAB93 /* ListTableViewDelegate.swift in Sources */,
 				786721C0243CAD3B003441CC /* ListTableViewCell.swift in Sources */,
 				78143A80243F4E0F000DE8CD /* ColumnInformation.swift in Sources */,
 			);
