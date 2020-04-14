@@ -30,7 +30,7 @@ CREATE TABLE history
     user       VARCHAR(50)        NOT NULL,
     method     VARCHAR(100)       NOT NULL,
     uri        VARCHAR(100)       NOT NULL,
-    param       VARCHAR(1000),
+    param       VARCHAR(2000),
     created_at TIMESTAMP          NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

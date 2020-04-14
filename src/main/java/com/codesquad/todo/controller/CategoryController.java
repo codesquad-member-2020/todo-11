@@ -2,7 +2,6 @@ package com.codesquad.todo.controller;
 
 import com.codesquad.todo.bean.ApiResponse;
 import com.codesquad.todo.bean.Category;
-import com.codesquad.todo.bean.Note;
 import com.codesquad.todo.message.SuccessMessages;
 import com.codesquad.todo.service.CategoryService;
 import io.swagger.annotations.Api;
@@ -12,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RestController
@@ -31,7 +32,8 @@ public class CategoryController {
 
   @ApiOperation(value = "", notes = "Create category")
   @PostMapping
-  public ResponseEntity<ApiResponse> create(@RequestBody Category category) {
+  public ResponseEntity<ApiResponse> create(@RequestBody Category category, HttpServletRequest request) {
+    request.setAttribute("body", category);
     return new ResponseEntity<>(
         new ApiResponse(SuccessMessages.SUCCESS, categoryService.create(category)), HttpStatus.OK);
   }
