@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -21,13 +20,6 @@ public class NoteService {
   @Autowired
   NoteRepository noteRepository;
 
-  public Map<String, Object> getAll() {
-    Map<String, Object> result = new HashMap<>();
-    result.put("notes", noteRepository.findAll());
-
-    return result;
-  }
-
   public Map<String, Object> create(Note note) {
     Map<String, Object> result = new HashMap<>();
     result.put("note", noteRepository.save(note));
@@ -36,34 +28,44 @@ public class NoteService {
   }
 
   public Map<String, Object> delete(Long id) {
-    Optional<Note> noteOptional = noteRepository.findById(id);
-    Note note = noteOptional.orElseThrow(() -> new NoSuchElementException(ErrorMessages.NO_SUCH_NOTE_OF_REQUEST_ID));
-
-    note.delete();
+    Note findNote = findById(id);
+    findNote.delete();
 
     Map<String, Object> result = new HashMap<>();
-    result.put("note", noteRepository.save(note));
+    result.put("note", noteRepository.save(findNote));
 
     return result;
   }
 
-  public Map<String, Object> getSpecificCategory(int categoryId) {
+  public Map<String, Object> getSpecificCategory(int categoryId, String user) {
     Map<String, Object> result = new HashMap<>();
-    result.put("notes", noteRepository.findAllByCategoryAndDeletedFalse(categoryId));
+    result.put("notes", noteRepository.findAllByCategoryAndDeletedFalse(categoryId, user));
 
     return result;
   }
 
   public Map<String, Object> patch(Note note) {
-    Optional<Note> noteOptional = noteRepository.findById(note.getId());
-    Note findNote = noteOptional.orElseThrow(
-        () -> new NoSuchElementException(ErrorMessages.NO_SUCH_NOTE_OF_REQUEST_ID));
-
+    Note findNote = findById(note.getId());
     findNote.patch(note);
 
     Map<String, Object> result = new HashMap<>();
-    result.put("findNote", noteRepository.save(findNote));
+    result.put("note", noteRepository.save(findNote));
 
     return result;
+  }
+
+  public Map<String, Object> move(Note note) {
+    Note findNote = findById(note.getId());
+    findNote.patch(note);
+
+    Map<String, Object> result = new HashMap<>();
+    result.put("note", noteRepository.save(findNote));
+
+    return result;
+  }
+
+  private Note findById(Long id) {
+    return noteRepository.findById(id).orElseThrow(
+        () -> new NoSuchElementException(ErrorMessages.NO_SUCH_NOTE_OF_REQUEST_ID));
   }
 }

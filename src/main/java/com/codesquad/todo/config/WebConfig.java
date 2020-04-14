@@ -1,6 +1,6 @@
 package com.codesquad.todo.config;
 
-import com.codesquad.todo.intercepter.Intercepter;
+import com.codesquad.todo.intercepter.Interceptor;
 import com.codesquad.todo.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
 
   @Override
   public void addInterceptors(InterceptorRegistry registry) {
-    registry.addInterceptor(new Intercepter(historyService))
+    registry.addInterceptor(new Interceptor(historyService))
         .addPathPatterns("/api/**");
   }
 }
