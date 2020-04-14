@@ -18,10 +18,9 @@ class ListViewController: UIViewController {
         self.parent?.performSegue(withIdentifier: editorSegue, sender: column)
     }
     
-    private var tableViewDataSource = ListTableViewDataSource()
-    private var tableViewDelegate = ListTableViewDelegate()
     private let tableViewCell = UINib(nibName: "ListTableViewCell", bundle: nil)
     var column: Column?
+    let taskInformationManager = TaskInformationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,17 +41,17 @@ class ListViewController: UIViewController {
     }
     
     func configureTableView() {
-        tableView.dataSource = tableViewDataSource
-        tableView.delegate = tableViewDelegate
+        tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(tableViewCell, forCellReuseIdentifier: listTableViewCell)
     }
     
     func request() {
         guard let column = self.column else { return }
-        tableViewDataSource.request(column: column) {
+        request(column: column) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.badgeLabel.text = String(self.tableViewDataSource.tasksCount())
+                self.badgeLabel.text = String(self.tasksCount())
             }
         }
     }
@@ -61,7 +60,7 @@ class ListViewController: UIViewController {
         guard let userInfo = notification.userInfo else { return }
         let columnInfo = userInfo[addTaskInfoKey] as! Column
         guard columnInfo == column else { return }
-        tableViewDataSource.request(column: columnInfo) {
+        request(column: columnInfo) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ListTableViewDelegate: NSObject, UITableViewDelegate {
+extension ListViewController: UITableViewDelegate {
 
 
     

@@ -8,9 +8,7 @@
 
 import UIKit
 
-class ListTableViewDataSource: NSObject, UITableViewDataSource {
-    
-    let taskInformationManager = TaskInformationManager()
+extension ListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskInformationManager.tasksCount ?? 0
