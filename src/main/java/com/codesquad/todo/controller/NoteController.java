@@ -44,6 +44,13 @@ public class NoteController {
     return new ApiResponse(SuccessMessages.SUCCESS, noteService.patch(note));
   }
 
+  @ApiOperation(value = "", notes = "Move note")
+  @PatchMapping("move")
+  public ApiResponse move(@RequestBody Note note, HttpServletRequest request) {
+    request.setAttribute("body", note);
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.move(note));
+  }
+
   @ApiOperation(value = "", notes = "Get all notes about specific category")
   @GetMapping("/category")
   public ApiResponse getSpecificCategory(@RequestParam int categoryId) {
