@@ -54,7 +54,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="s3w-fT-Y6j" kind="presentation" identifier="editorSegue" id="zwI-mM-uie"/>
+                        <segue destination="s3w-fT-Y6j" kind="presentation" identifier="addTaskSegue" id="zwI-mM-uie"/>
+                        <segue destination="s3w-fT-Y6j" kind="presentation" identifier="editTaskSegue" id="dgc-yH-uYe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ale-HD-Hmg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -84,7 +85,7 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="touchUpAddTaskButton:" destination="s3w-fT-Y6j" eventType="touchUpInside" id="6UP-N9-dfb"/>
+                                    <action selector="touchUpConfirmButton:" destination="s3w-fT-Y6j" eventType="touchUpInside" id="Z5N-xX-Uwe"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0F-Os-uoM">
@@ -119,8 +120,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VhW-ft-gFL"/>
                     </view>
+                    <navigationItem key="navigationItem" id="1ZS-as-rET"/>
                     <connections>
-                        <outlet property="addTaskButton" destination="5mx-tM-h88" id="TzG-93-C8d"/>
+                        <outlet property="confirmButton" destination="5mx-tM-h88" id="TzG-93-C8d"/>
                         <outlet property="contentTextView" destination="Cjn-WR-tiv" id="xAR-8Z-ykO"/>
                         <outlet property="titleTextField" destination="x0F-Os-uoM" id="FJ7-oz-Z4Z"/>
                     </connections>
@@ -219,5 +221,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Uak-WK-3aw"/>
+        <segue reference="zwI-mM-uie"/>
     </inferredMetricsTieBreakers>
 </document>

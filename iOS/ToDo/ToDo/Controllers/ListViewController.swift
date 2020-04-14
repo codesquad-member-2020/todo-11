@@ -15,7 +15,7 @@ class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func touchUpAddButton(_ sender: UIButton) {
-        self.parent?.performSegue(withIdentifier: editorSegue, sender: column)
+        self.parent?.performSegue(withIdentifier: addTaskSegue, sender: column)
     }
     
     private let tableViewCell = UINib(nibName: "ListTableViewCell", bundle: nil)
@@ -30,6 +30,10 @@ class ListViewController: UIViewController {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(renewList),
                                                name: addTaskNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(renewList),
+                                               name: editTaskNotification,
                                                object: nil)
     }
     
@@ -58,7 +62,7 @@ class ListViewController: UIViewController {
     
     @objc func renewList(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
-        let columnInfo = userInfo[addTaskInfoKey] as! Column
+        let columnInfo = userInfo[columnInfoKey] as! Column
         guard columnInfo == column else { return }
         request(column: columnInfo) {
             DispatchQueue.main.async {

@@ -28,7 +28,7 @@ struct Tasks: Codable {
 struct Task: Codable {
     
     let identifier: Int
-    let content: String
+    var content: String
     let createdDate: String
     let updatedDate: String
     let user: String

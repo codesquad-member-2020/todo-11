@@ -10,22 +10,46 @@ import UIKit
 
 class EditorViewController: UIViewController {
 
-    @IBOutlet weak var addTaskButton: UIButton!
+    @IBOutlet weak var confirmButton: UIButton!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentTextView: UITextView!
     
     let taskInformationManager = TaskInformationManager()
+    var mode: Mode?
     var column: Column?
+    var task: Task?
     
-    @IBAction func touchUpAddTaskButton(_ sender: UIButton) {
+    @IBAction func touchUpConfirmButton(_ sender: UIButton) {
+        if mode == .add {
+            addTask()
+        } else if mode == .edit {
+            editTask()
+        }
+    }
+    
+    func addTask() {
         guard let column = column else { return }
         guard let content = titleTextField.text else { return }
         taskInformationManager.addTask(column: column, content: content) {
             DispatchQueue.main.async {
-                let columnInfo: [String : Column] = [addTaskInfoKey: column]
                 NotificationCenter.default.post(name: addTaskNotification,
                                                 object: nil,
-                                                userInfo: columnInfo)
+                                                userInfo: [columnInfoKey: column])
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func editTask() {
+        guard let column = column else { return }
+        guard var task = task else { return }
+        guard let text = titleTextField.text else { return }
+        task.content = text
+        taskInformationManager.editTask(column: column, task: task) {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: editTaskNotification,
+                                                object: nil,
+                                                userInfo: [columnInfoKey: column])
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -37,11 +61,11 @@ class EditorViewController: UIViewController {
     
     @IBAction func textFieldEditingDidChange(_ sender: UITextField) {
         if let text = titleTextField.text, !text.isEmpty {
-            addTaskButton.isEnabled = true
-            addTaskButton.setTitleColor(.systemBlue, for: .normal)
+            confirmButton.isEnabled = true
+            confirmButton.setTitleColor(.systemBlue, for: .normal)
         } else {
-            addTaskButton.isEnabled = false
-            addTaskButton.setTitleColor(.darkGray, for: .normal)
+            confirmButton.isEnabled = false
+            confirmButton.setTitleColor(.darkGray, for: .normal)
         }
     }
     
@@ -50,8 +74,16 @@ class EditorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureTitleTextField()
-        configureContentTextView()
+        if mode == .add {
+            configureTitleTextField()
+            configureContentTextView()
+        } else if mode == .edit {
+            NotificationCenter.default.addObserver(self,
+                                                   selector: #selector(configureColumn),
+                                                   name: configureColumnNotification,
+                                                   object: nil)
+            titleTextField.text = task?.content
+        }
     }
     
     func configureTitleTextField() {
@@ -67,5 +99,18 @@ class EditorViewController: UIViewController {
         contentTextView.text = "Content"
         contentTextView.textColor = .lightGray
     }
+    
+    @objc func configureColumn(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        let columnInfo = userInfo[columnInfoKey] as! Column
+        column = columnInfo
+    }
 
+}
+
+enum Mode {
+    
+    case add
+    case edit
+    
 }

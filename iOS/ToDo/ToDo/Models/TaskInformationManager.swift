@@ -48,6 +48,27 @@ class TaskInformationManager {
         dataTask.resume()
     }
     
+    func editTask(column: Column, task: Task, _ completion: @escaping () -> ()) {
+        guard let url = URL(string: "http://15.165.223.140:8080/api/notes") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body = """
+            {
+                "categoryId": \(column),
+                "content": "\(task.content)",
+                "id": \(task.identifier),
+                "user": "anonymous"
+            }
+        """.data(using: .utf8)
+        request.httpBody = body
+        let session = URLSession(configuration: .default)
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            completion()
+        }
+        dataTask.resume()
+    }
+    
     func deleteTask(identifier: Int) {
         guard let url = URL(string: "http://15.165.223.140:8080/api/notes?id=\(identifier)") else { return }
         var request = URLRequest(url: url)

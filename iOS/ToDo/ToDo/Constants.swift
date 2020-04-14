@@ -11,8 +11,11 @@ import Foundation
 let toDoSegue = "toDoSegue"
 let inProgressSegue = "inProgressSegue"
 let doneSegue = "doneSegue"
-let editorSegue = "editorSegue"
+let addTaskSegue = "addTaskSegue"
+let editTaskSegue = "editTaskSegue"
 let listTableViewCell = "listTableViewCell"
 
 let addTaskNotification = Notification.Name("addTaskNotification")
-let addTaskInfoKey = "column"
+let editTaskNotification = Notification.Name("editTaskNotification")
+let configureColumnNotification = Notification.Name("configureColumnNotification")
+let columnInfoKey = "column"
