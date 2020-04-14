@@ -37,7 +37,7 @@ class TaskInformationManager {
             {
                 "categoryId": \(column),
                 "content": "\(content)",
-                "user": "jinie"
+                "user": "anonymous"
             }
         """.data(using: .utf8)
         request.httpBody = body
