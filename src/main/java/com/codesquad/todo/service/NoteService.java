@@ -37,9 +37,9 @@ public class NoteService {
     return result;
   }
 
-  public Map<String, Object> getSpecificCategory(int categoryId) {
+  public Map<String, Object> getSpecificCategory(int categoryId, String user) {
     Map<String, Object> result = new HashMap<>();
-    result.put("notes", noteRepository.findAllByCategoryAndDeletedFalse(categoryId));
+    result.put("notes", noteRepository.findAllByCategoryAndDeletedFalse(categoryId, user));
 
     return result;
   }

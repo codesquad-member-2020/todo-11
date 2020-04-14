@@ -26,6 +26,12 @@ INSERT INTO note(category_id, content, user, rank)
 VALUES (1, '미슈가 해야할 일 5', '미슈', 5);
 INSERT INTO note(category_id, content, user, rank)
 VALUES (1, '미슈가 해야할 일 6', '미슈', 6);
+INSERT INTO note(category_id, content, user, rank)
+VALUES (1, 'anonymous 가 해야할 일 6', 'anonymous', 9);
+INSERT INTO note(category_id, content, user, rank)
+VALUES (1, 'anonymous 가 해야할 일 6', 'anonymous', 10);
+INSERT INTO note(category_id, content, user, rank)
+VALUES (1, 'anonymous 가 해야할 일 6', 'anonymous', 11);
 
 INSERT INTO note(category_id, content, user, rank)
 VALUES (2, 'dan 이 하는중 1', 'dan', 1);
@@ -39,6 +45,10 @@ INSERT INTO note(category_id, content, user, rank)
 VALUES (2, '미슈가 하는중 5', '미슈', 5);
 INSERT INTO note(category_id, content, user, rank)
 VALUES (2, '미슈가 하는중 6', '미슈', 6);
+INSERT INTO note(category_id, content, user, rank)
+VALUES (2, 'anonymous가 하는중 5', 'anonymous', 10);
+INSERT INTO note(category_id, content, user, rank)
+VALUES (2, 'anonymous가 하는중 6', 'anonymous', 11);
 
 INSERT INTO note(category_id, content, user, rank)
 VALUES (3, 'sally 가 다했어 1', 'sally', 1);

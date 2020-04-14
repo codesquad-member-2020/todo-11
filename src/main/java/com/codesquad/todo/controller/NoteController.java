@@ -2,8 +2,10 @@ package com.codesquad.todo.controller;
 
 import com.codesquad.todo.bean.ApiResponse;
 import com.codesquad.todo.bean.Note;
+import com.codesquad.todo.message.AuthMessages;
 import com.codesquad.todo.message.SuccessMessages;
 import com.codesquad.todo.service.NoteService;
+import com.codesquad.todo.util.TokenUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -53,7 +55,8 @@ public class NoteController {
 
   @ApiOperation(value = "", notes = "Get all notes about specific category")
   @GetMapping("/category")
-  public ApiResponse getSpecificCategory(@RequestParam int categoryId) {
-    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getSpecificCategory(categoryId));
+  public ApiResponse getSpecificCategory(@RequestParam int categoryId, HttpServletRequest request) {
+    String user = TokenUtil.getUserId(request.getHeader(AuthMessages.HEADER_AUTH));
+    return new ApiResponse(SuccessMessages.SUCCESS, noteService.getSpecificCategory(categoryId, user));
   }
 }
