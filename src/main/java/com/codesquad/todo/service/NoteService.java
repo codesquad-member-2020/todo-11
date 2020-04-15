@@ -22,7 +22,8 @@ public class NoteService {
 
   public Map<String, Object> create(Note note) {
     Map<String, Object> result = new HashMap<>();
-    note.setRank(noteRepository.getRankByCategory(note.getCategoryId()) + 1);
+    long rank = noteRepository.getRankByCategory(note.getCategoryId()).orElse(0L);
+    note.setRank(rank + 1L);
     result.put("note", noteRepository.save(note));
 
     return result;
