@@ -7,6 +7,53 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Activities View Controller-->
+        <scene sceneID="e9h-FJ-7d6">
+            <objects>
+                <viewController id="oSF-jl-CPW" customClass="ActivitiesViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N1k-a6-K7e">
+                        <rect key="frame" x="0.0" y="0.0" width="388" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udK-Mq-9sb">
+                                <rect key="frame" x="13" y="0.0" width="375" height="33.5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbq-m8-gDu">
+                                <rect key="frame" x="21" y="0.0" width="69.5" height="33.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4x2-7f-SiZ">
+                                <rect key="frame" x="13" y="33.5" width="375" height="633.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="4x2-7f-SiZ" firstAttribute="height" secondItem="dgO-GX-svp" secondAttribute="height" multiplier="0.95" id="3Wh-ob-o5Z"/>
+                            <constraint firstItem="tbq-m8-gDu" firstAttribute="leading" secondItem="udK-Mq-9sb" secondAttribute="leading" constant="8" id="7Y1-Yr-5ft"/>
+                            <constraint firstItem="4x2-7f-SiZ" firstAttribute="leading" secondItem="dgO-GX-svp" secondAttribute="leading" id="7yT-i5-Gkc"/>
+                            <constraint firstItem="tbq-m8-gDu" firstAttribute="bottom" secondItem="udK-Mq-9sb" secondAttribute="bottom" id="OVT-0S-Qtw"/>
+                            <constraint firstItem="udK-Mq-9sb" firstAttribute="height" secondItem="dgO-GX-svp" secondAttribute="height" multiplier="0.05" id="Ogr-df-7WT"/>
+                            <constraint firstItem="tbq-m8-gDu" firstAttribute="top" secondItem="udK-Mq-9sb" secondAttribute="top" id="Rx3-h8-Nnh"/>
+                            <constraint firstItem="udK-Mq-9sb" firstAttribute="top" secondItem="dgO-GX-svp" secondAttribute="top" id="VHa-qX-38G"/>
+                            <constraint firstItem="dgO-GX-svp" firstAttribute="bottom" secondItem="4x2-7f-SiZ" secondAttribute="bottom" id="Xuq-KV-D6N"/>
+                            <constraint firstItem="dgO-GX-svp" firstAttribute="trailing" secondItem="udK-Mq-9sb" secondAttribute="trailing" id="dL9-Hp-Omd"/>
+                            <constraint firstItem="udK-Mq-9sb" firstAttribute="leading" secondItem="dgO-GX-svp" secondAttribute="leading" id="r2U-64-6gR"/>
+                            <constraint firstItem="dgO-GX-svp" firstAttribute="trailing" secondItem="4x2-7f-SiZ" secondAttribute="trailing" id="ten-9A-ewg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dgO-GX-svp"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="4x2-7f-SiZ" id="4AL-j8-HNe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lhy-NM-tho" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1207" y="-1187"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="uGE-d9-a1J">
             <objects>
@@ -51,6 +98,11 @@
                     <navigationItem key="navigationItem" id="OhV-0e-e0w">
                         <barButtonItem key="rightBarButtonItem" title="Menu" id="uHc-R1-7NI">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="oSF-jl-CPW" kind="popoverPresentation" popoverAnchorBarButtonItem="uHc-R1-7NI" id="pcK-k7-MYB">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -221,6 +273,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Uak-WK-3aw"/>
-        <segue reference="zwI-mM-uie"/>
+        <segue reference="dgc-yH-uYe"/>
     </inferredMetricsTieBreakers>
 </document>

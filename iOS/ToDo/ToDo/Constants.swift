@@ -14,6 +14,7 @@ let doneSegue = "doneSegue"
 let addTaskSegue = "addTaskSegue"
 let editTaskSegue = "editTaskSegue"
 let listTableViewCell = "listTableViewCell"
+let activitiesTableViewCell = "activitiesTableViewCell"
 
 let addTaskNotification = Notification.Name("addTaskNotification")
 let editTaskNotification = Notification.Name("editTaskNotification")
