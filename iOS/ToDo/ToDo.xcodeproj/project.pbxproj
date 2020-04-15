@@ -29,6 +29,7 @@
 		78B7146E2446D88D00B120DD /* ActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B7146C2446D88D00B120DD /* ActivitiesTableViewCell.xib */; };
 		78B714702446D9BF00B120DD /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7146F2446D9BF00B120DD /* ActivitiesViewController.swift */; };
 		78B714742446DFEB00B120DD /* ActivityInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B714732446DFEB00B120DD /* ActivityInformation.swift */; };
+		78B714782446E45700B120DD /* ActivityInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B714772446E45700B120DD /* ActivityInformationManager.swift */; };
 		78CAF44C244568C8002FAB93 /* ListTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAF44B244568C8002FAB93 /* ListTableViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		78B7146C2446D88D00B120DD /* ActivitiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTableViewCell.xib; sourceTree = "<group>"; };
 		78B7146F2446D9BF00B120DD /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
 		78B714732446DFEB00B120DD /* ActivityInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityInformation.swift; sourceTree = "<group>"; };
+		78B714772446E45700B120DD /* ActivityInformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityInformationManager.swift; sourceTree = "<group>"; };
 		78CAF44B244568C8002FAB93 /* ListTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				78A65F07243DD0EE0011D7B2 /* TaskInformation.swift */,
 				78A65F09243DEA670011D7B2 /* TaskInformationManager.swift */,
 				78B714732446DFEB00B120DD /* ActivityInformation.swift */,
+				78B714772446E45700B120DD /* ActivityInformationManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				783C61D6243C7226005E6097 /* AppDelegate.swift in Sources */,
 				78A65F0A243DEA670011D7B2 /* TaskInformationManager.swift in Sources */,
 				786721C9243CE4B4003441CC /* EditorViewController.swift in Sources */,
+				78B714782446E45700B120DD /* ActivityInformationManager.swift in Sources */,
 				786721BD243CAC2C003441CC /* ListViewController.swift in Sources */,
 				786721C5243CAF31003441CC /* Constants.swift in Sources */,
 				783C61D8243C7226005E6097 /* SceneDelegate.swift in Sources */,
