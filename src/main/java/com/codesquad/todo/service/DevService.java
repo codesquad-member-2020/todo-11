@@ -62,8 +62,8 @@ public class DevService {
     categoryRepository.save(new Category("하는중"));
     categoryRepository.save(new Category("다했어"));
 
-    categoryRepository.save(new Category("다했어", true));
-    categoryRepository.save(new Category("다했어", true));
+    categoryRepository.save(new Category("지운일", true));
+    categoryRepository.save(new Category("지웠어", true));
 
 
     for (int i = 1; i < 4; i++) {

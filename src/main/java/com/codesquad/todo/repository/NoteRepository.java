@@ -39,7 +39,7 @@ public interface NoteRepository extends CrudRepository<Note, Long> {
          "  AND t.rank >= :rank " +
          "  AND t.id != :id " +
          "ORDER BY t.rank DESC")
-  List<Note> findAllByCategoryAndRankAfterOrderByRankDesc(long categoryId, long rank, long id);
+  List<Note> findAllByCategoryAndRankAfterOrderByRankDescExceptId(long categoryId, long rank, long id);
 
   @Query("SELECT max(t.rank) " +
          "FROM note t " +
