@@ -32,6 +32,7 @@ public class WebConfig implements WebMvcConfigurer {
     registry.addInterceptor(new Interceptor(historyService))
         .addPathPatterns("/api/**")
         .excludePathPatterns("/api/notes/category")
-        .excludePathPatterns("/api/history");
+        .excludePathPatterns("/api/history")
+        .excludePathPatterns("/api/login");
   }
 }
