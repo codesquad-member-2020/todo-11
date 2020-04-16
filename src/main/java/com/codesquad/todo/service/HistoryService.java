@@ -10,25 +10,16 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
 @Service
-public class HistoryService {
+public class HistoryService extends BasicService {
 
   @Autowired
   private HistoryRepository historyRepository;
 
   public void create(HttpServletRequest request) {
-    log.debug("### history create : {}", request.toString());
-    log.debug("### request.getQueryString() : {}", request.getQueryString());
-
-    if ("POST".equalsIgnoreCase(request.getMethod())) {
-      log.debug("### getReader!!");
-      log.debug("### getReader : {}", request.getAttribute("body"));
-    }
-
     String userId = TokenUtil.getUserId(request.getHeader(AuthMessages.HEADER_AUTH));
     String method = request.getMethod();
     String uri = request.getRequestURI();
@@ -43,11 +34,8 @@ public class HistoryService {
     historyRepository.save(history);
   }
 
-  public Map<String, Object> getAllByUser(String userId) {
-    Map<String, Object> result = new HashMap<>();
-    result.put("history", historyRepository.findAllByUserId(userId));
-
-    return result;
+  public Map<String, ?> getAllByUser(String userId) {
+    return getResultMap("history", historyRepository.findAllByUserId(userId));
   }
 
   private String getParameter(HttpServletRequest request) {

@@ -8,8 +8,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,16 +23,14 @@ public class CategoryController {
 
   @ApiOperation(value = "", notes = "Get all category (not deleted)")
   @GetMapping
-  public ResponseEntity<ApiResponse> getAllDeletedFalse() {
-    return new ResponseEntity<>(
-        new ApiResponse(SuccessMessages.SUCCESS, categoryService.getAllDeletedFalse()), HttpStatus.OK);
+  public ApiResponse getAllDeletedFalse() {
+    return new ApiResponse(SuccessMessages.SUCCESS, categoryService.getAllDeletedFalse());
   }
 
   @ApiOperation(value = "", notes = "Create category")
   @PostMapping
-  public ResponseEntity<ApiResponse> create(@RequestBody Category category, HttpServletRequest request) {
+  public ApiResponse create(@RequestBody Category category, HttpServletRequest request) {
     request.setAttribute("body", category);
-    return new ResponseEntity<>(
-        new ApiResponse(SuccessMessages.SUCCESS, categoryService.create(category)), HttpStatus.OK);
+    return new ApiResponse(SuccessMessages.SUCCESS, categoryService.create(category));
   }
 }

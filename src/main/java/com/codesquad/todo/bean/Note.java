@@ -31,12 +31,10 @@ public class Note implements Serializable {
 
   @Null
   @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime createdAt;
 
   @Null
   @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime updatedAt;
 
   @NotBlank // login 구현 후 @Null 로 변경합니다
@@ -45,7 +43,7 @@ public class Note implements Serializable {
   @AssertFalse
   private boolean deleted;
 
-  private long rank;
+  private Long rank;
 
   public Note() {
   }

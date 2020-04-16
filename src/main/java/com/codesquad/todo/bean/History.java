@@ -24,7 +24,6 @@ public class History implements Serializable {
 
   @Null
   @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   private LocalDateTime createdAt;
 
   public History() {

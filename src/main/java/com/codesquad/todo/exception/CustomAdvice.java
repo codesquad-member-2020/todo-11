@@ -38,21 +38,18 @@ public class CustomAdvice {
   @ExceptionHandler(NoSuchElementException.class)
   @ResponseStatus(HttpStatus.FORBIDDEN)
   public ErrorResponse handleNoSuchElementException(NoSuchElementException e) {
-
     return new ErrorResponse(ErrorMessages.NO_SUCH_ELEMENT_EXCEPTION, e.getMessage());
   }
 
   @ExceptionHandler(DbActionExecutionException.class)
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   public ErrorResponse handleDbActionExecutionException(DbActionExecutionException e) {
-
     return new ErrorResponse(ErrorMessages.DB_ACTION_EXECUTION_EXCEPTION, e.getMessage());
   }
 
   @ExceptionHandler(UnauthorizedException.class)
   @ResponseStatus(HttpStatus.UNAUTHORIZED)
   public ErrorResponse handleUnauthorizedException(UnauthorizedException e) {
-
     return new ErrorResponse(ErrorMessages.UNAUTHORIZED_EXCEPTION, e.getMessage());
   }
 }
