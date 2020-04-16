@@ -14,7 +14,7 @@ class TaskInformationManager {
     var tasksCount: Int?
     
     func request(column: Column, _ completion: @escaping () -> ()) {
-        guard let url = URL(string: "http://15.165.223.140:8080/api/notes/category?categoryId=\(column)") else { return }
+        guard let url = URL(string: "http://15.165.223.140:80/api/notes/category?categoryId=\(column)") else { return }
         let request = URLRequest(url: url)
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: request) { (data, response, error) in
@@ -29,7 +29,7 @@ class TaskInformationManager {
     }
     
     func addTask(column: Column, content: String, _ completion: @escaping () -> ()) {
-        guard let url = URL(string: "http://15.165.223.140:8080/api/notes") else { return }
+        guard let url = URL(string: "http://15.165.223.140:80/api/notes") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -49,7 +49,7 @@ class TaskInformationManager {
     }
     
     func editTask(column: Column, task: Task, _ completion: @escaping () -> ()) {
-        guard let url = URL(string: "http://15.165.223.140:8080/api/notes") else { return }
+        guard let url = URL(string: "http://15.165.223.140:80/api/notes") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -70,7 +70,7 @@ class TaskInformationManager {
     }
     
     func deleteTask(identifier: Int) {
-        guard let url = URL(string: "http://15.165.223.140:8080/api/notes?id=\(identifier)") else { return }
+        guard let url = URL(string: "http://15.165.223.140:80/api/notes?id=\(identifier)") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

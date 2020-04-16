@@ -10,10 +10,15 @@ import Foundation
 
 class ActivityInformationManager {
     
-    var activities: [Activity]?
+    var activities: [Activity]? {
+        didSet {
+            count = activities?.count
+        }
+    }
+    var count: Int?
     
     func request(_ completion: @escaping () -> ()) {
-        guard let url = URL(string: "http://15.165.223.140:8080/api/history") else { return }
+        guard let url = URL(string: "http://15.165.223.140:80/api/history") else { return }
         let request = URLRequest(url: url)
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: request) { (data, response, error) in
@@ -21,7 +26,6 @@ class ActivityInformationManager {
             let decoder = JSONDecoder()
             guard let responseData = try? decoder.decode(ActivityInformation.self, from: data) else { return }
             self.activities = responseData.contents.activities
-            print(self.activities)
             completion()
         }
         dataTask.resume()

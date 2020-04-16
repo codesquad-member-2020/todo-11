@@ -9,6 +9,9 @@
 import UIKit
 
 class ActivitiesTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var actionLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

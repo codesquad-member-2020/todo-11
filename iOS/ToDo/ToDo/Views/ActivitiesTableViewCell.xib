@@ -16,21 +16,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="360" height="90"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CB4-e0-5p1">
-                        <rect key="frame" x="8" y="8" width="344" height="74"/>
+                    <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@anonymous Moved 야구 직관하기 from 해야할일 to 하는중" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CB4-e0-5p1">
+                        <rect key="frame" x="8" y="8" width="344" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 minute ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcn-Y2-vEb">
+                        <rect key="frame" x="8" y="36.5" width="344" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="CB4-e0-5p1" secondAttribute="bottom" constant="8" id="PSN-PF-p5D"/>
-                    <constraint firstItem="CB4-e0-5p1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="QhO-Vr-mZd"/>
-                    <constraint firstAttribute="trailing" secondItem="CB4-e0-5p1" secondAttribute="trailing" constant="8" id="dSR-bK-ztY"/>
-                    <constraint firstItem="CB4-e0-5p1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="rqh-r6-uHl"/>
+                    <constraint firstItem="vcn-Y2-vEb" firstAttribute="top" secondItem="CB4-e0-5p1" secondAttribute="bottom" constant="8" id="AZq-hC-hNc"/>
+                    <constraint firstItem="vcn-Y2-vEb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="LvK-i2-jpZ"/>
+                    <constraint firstItem="CB4-e0-5p1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="XQd-s9-hHl"/>
+                    <constraint firstAttribute="trailing" secondItem="CB4-e0-5p1" secondAttribute="trailing" constant="8" id="XVy-Ed-eTh"/>
+                    <constraint firstItem="CB4-e0-5p1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="ieo-NE-boz"/>
+                    <constraint firstAttribute="trailing" secondItem="vcn-Y2-vEb" secondAttribute="trailing" constant="8" id="mDo-Kd-nqp"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="actionLabel" destination="CB4-e0-5p1" id="GUf-BG-ySd"/>
+                <outlet property="timeLabel" destination="vcn-Y2-vEb" id="RAf-dY-7zl"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="152.67857142857142"/>
         </tableViewCell>
     </objects>
