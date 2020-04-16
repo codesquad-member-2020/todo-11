@@ -45,7 +45,7 @@ public class Note implements Serializable {
   @AssertFalse
   private boolean deleted;
 
-  private long rank;
+  private Long rank;
 
   public Note() {
   }

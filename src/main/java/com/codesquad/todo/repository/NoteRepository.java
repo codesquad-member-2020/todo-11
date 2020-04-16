@@ -24,7 +24,7 @@ public interface NoteRepository extends CrudRepository<Note, Long> {
          "  AND t.deleted = FALSE " +
          "  AND t.user = :user " +
          "ORDER BY t.rank ASC")
-  List<Note> findAllByCategoryAndDeletedFalse(long categoryId, String user);
+  List<Note> findAllByCategoryAndDeletedFalse(Long categoryId, String user);
 
   @Query("SELECT t.id, " +
          "       t.user, " +
@@ -39,10 +39,10 @@ public interface NoteRepository extends CrudRepository<Note, Long> {
          "  AND t.rank >= :rank " +
          "  AND t.id != :id " +
          "ORDER BY t.rank DESC")
-  List<Note> findAllByCategoryAndRankAfterOrderByRankDescExceptId(long categoryId, long rank, long id);
+  List<Note> findAllByCategoryAndRankAfterOrderByRankDescExceptId(Long categoryId, Long rank, Long id);
 
   @Query("SELECT max(t.rank) " +
          "FROM note t " +
          "WHERE t.category_id = :categoryId")
-  Optional<Long> getRankByCategory(long categoryId);
+  Optional<Long> getRankByCategory(Long categoryId);
 }

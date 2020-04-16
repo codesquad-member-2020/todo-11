@@ -55,7 +55,7 @@ public class NoteController {
 
   @ApiOperation(value = "", notes = "Get all notes about specific category")
   @GetMapping("/category")
-  public ApiResponse getSpecificCategory(@RequestParam int categoryId, HttpServletRequest request) {
+  public ApiResponse getSpecificCategory(@RequestParam Long categoryId, HttpServletRequest request) {
     String user = TokenUtil.getUserId(request.getHeader(AuthMessages.HEADER_AUTH));
     return new ApiResponse(SuccessMessages.SUCCESS, noteService.getSpecificCategory(categoryId, user));
   }

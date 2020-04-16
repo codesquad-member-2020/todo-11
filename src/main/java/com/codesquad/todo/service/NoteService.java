@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -35,7 +34,7 @@ public class NoteService extends BasicService {
     return getResultMap("note", noteRepository.save(findNote));
   }
 
-  public Map<String, ?> getSpecificCategory(int categoryId, String user) {
+  public Map<String, ?> getSpecificCategory(Long categoryId, String user) {
     return getResultMap("notes", noteRepository.findAllByCategoryAndDeletedFalse(categoryId, user));
   }
 
