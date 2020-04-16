@@ -30,17 +30,13 @@ class TaskInformationManager {
     
     func addTask(column: Column, data: String, _ completion: @escaping () -> ()) {
         guard let url = URL(string: "http://15.165.223.140:80/api/notes") else { return }
+        let encoder = JSONEncoder()
+        let addTaskInfo = AddTaskInfo(categoryId: column.rawValue, content: data, user: "anonymous")
+        let jsonData = try? encoder.encode(addTaskInfo)
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body = """
-            {
-                "categoryId": \(column),
-                "content": "\(data)",
-                "user": "anonymous"
-            }
-        """.data(using: .utf8)
-        request.httpBody = body
+        request.httpBody = jsonData
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             completion()
@@ -57,7 +53,7 @@ class TaskInformationManager {
             {
                 "categoryId": 3,
                 "id": \(identifier),
-                "rank": 0
+                "rank": 100
             }
         """.data(using: .utf8)
         request.httpBody = body
@@ -117,5 +113,13 @@ class TaskInformationManager {
             
         }
     }
+    
+}
+
+struct AddTaskInfo: Codable {
+    
+    let categoryId: Int
+    let content: String
+    let user: String
     
 }

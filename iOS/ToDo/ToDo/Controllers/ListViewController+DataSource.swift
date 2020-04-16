@@ -32,6 +32,7 @@ extension ListViewController: UITableViewDataSource {
             taskInformationManager.tasks?.remove(at: indexPath.row)
             taskInformationManager.tasksCount! -= 1
             tableView.deleteRows(at: [indexPath], with: .fade)
+            NotificationCenter.default.post(name: deleteTaskNotification, object: nil)
         }
     }
     

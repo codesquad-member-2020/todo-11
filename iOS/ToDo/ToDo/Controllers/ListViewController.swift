@@ -32,12 +32,16 @@ class ListViewController: UIViewController {
                                                name: addTaskNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadDoneList),
+                                               name: moveToDoneNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadList),
                                                name: editTaskNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(reloadDoneList),
-                                               name: moveToDoneNotification,
+                                               selector: #selector(changeBadge),
+                                               name: deleteTaskNotification,
                                                object: nil)
     }
     
@@ -72,6 +76,7 @@ class ListViewController: UIViewController {
         request(column: columnInfo) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.badgeLabel.text = "\(self.taskInformationManager.tasksCount ?? 0)"
             }
         }
     }
@@ -81,8 +86,13 @@ class ListViewController: UIViewController {
         request(column: .done) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.changeBadge()
             }
         }
+    }
+    
+    @objc func changeBadge() {
+        self.badgeLabel.text = "\(self.taskInformationManager.tasksCount ?? 0)"
     }
 
 }
