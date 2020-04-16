@@ -79,4 +79,23 @@ class TaskInformationManager {
         dataTask.resume()
     }
     
+    func move() {
+        guard let url = URL(string: "http://15.165.223.140:8080/api/notes/move") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "PATCH"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body = """
+            {
+                "categoryId": 2,
+                "id": 11,
+                "rank": 3
+            }
+        """.data(using: .utf8)
+        request.httpBody = body
+        let session = URLSession(configuration: .default)
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            
+        }
+    }
+    
 }

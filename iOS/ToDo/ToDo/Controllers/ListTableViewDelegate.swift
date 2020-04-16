@@ -24,7 +24,7 @@ extension ListViewController: UITableViewDelegate {
                                                 object: nil,
                                                 userInfo: [columnInfoKey: column])
             }
-            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash")) { _ in
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
                 let identifier = tasks[indexPath.row].identifier
                 self.taskInformationManager.deleteTask(identifier: identifier)
                 self.taskInformationManager.tasks?.remove(at: indexPath.row)
@@ -37,3 +37,42 @@ extension ListViewController: UITableViewDelegate {
     }
     
 }
+
+//extension ListViewController: UITableViewDragDelegate {
+//
+//    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+//        guard let tasks = taskInformationManager.tasks else { return [] }
+//        let task = tasks[indexPath.row]
+//        let itemProvider = NSItemProvider()
+//        let dragItem = UIDragItem(itemProvider: itemProvider)
+//        dragItem.localObject = task
+//        return [dragItem]
+//    }
+//
+//}
+//
+//extension ListViewController: UITableViewDropDelegate {
+//
+//    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
+//        let destinationIndexPath: IndexPath
+//
+//        if let indexPath = coordinator.destinationIndexPath {
+//            destinationIndexPath = indexPath
+//        } else {
+//            let section = tableView.numberOfSections - 1
+//            let row = tableView.numberOfRows(inSection: section)
+//            destinationIndexPath = IndexPath(row: row, section: section)
+//        }
+//
+//        let item = coordinator.items.first!
+////        let task = item.dragItem as! Task
+//
+//        if let sourceIndexPath = item.sourceIndexPath {
+//            taskInformationManager.tasks?.remove(at: sourceIndexPath.row)
+//            taskInformationManager.tasks?.append(<#T##newElement: Task##Task#>)
+//        } else {
+//
+//        }
+//    }
+//
+//}
