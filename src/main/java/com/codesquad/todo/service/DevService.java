@@ -67,17 +67,17 @@ public class DevService {
 
 
     for (int i = 1; i < 4; i++) {
-      noteService.create(new Note(1L, "dan 이 해야할 일 " + i + "\n 2번쨰 줄", "dan"));
-      noteService.create(new Note(1L, "anonymous 이 해야할 일 " + i + "\n 2번쨰 줄", "anonymous"));
-      noteService.create(new Note(1L, "jinie 이 해야할 일 " + i + "\n 2번쨰 줄", "jinie"));
+      noteService.create(new Note(1L, "dan 이 해야할 일 " + i + "\n\n 1번쨰 줄\n2번째 줄\n3번째 줄", "dan"));
+      noteService.create(new Note(1L, "anonymous 이 해야할 일 " + i + "\n\n 1번쨰 줄\n2번째 줄\n3번째 줄", "anonymous"));
+      noteService.create(new Note(1L, "jinie 이 해야할 일 " + i + "\n\n 1번쨰 줄\n2번째 줄\n3번째 줄", "jinie"));
 
-      noteService.create(new Note(2L, "sally 이 하는중 " + i + "\n 2번쨰 줄", "sally"));
-      noteService.create(new Note(2L, "anonymous 이 하는중 " + i + "\n 2번쨰 줄", "anonymous"));
-      noteService.create(new Note(2L, "jinie 이 하는중 " + i + "\n 2번쨰 줄", "jinie"));
+      noteService.create(new Note(2L, "sally 이 하는중 " + i + "\n\n 1번쨰 줄\n2번째 줄\n3번째 줄", "sally"));
+      noteService.create(new Note(2L, "anonymous 이 하는중 " + i + "\n\n 1번쨰 줄\n2번째 줄\n3번째 줄", "anonymous"));
+      noteService.create(new Note(2L, "jinie 이 하는중 " + i + "\n\n 1번쨰 줄\n2번째 줄\n3번째 줄", "jinie"));
 
-      noteService.create(new Note(3L, "dan 이 다했어 " + i + "\n 2번쨰 줄", "dan"));
-      noteService.create(new Note(3L, "anonymous 이 다했어 " + i + "\n 2번쨰 줄", "anonymous"));
-      noteService.create(new Note(3L, "sally 이 다했어 " + i + "\n 2번쨰 줄", "sally"));
+      noteService.create(new Note(3L, "dan 이 다했어 " + i + "\n\n 1번쨰 줄\n2번째 줄\n3번째 줄", "dan"));
+      noteService.create(new Note(3L, "anonymous 이 다했어 " + i + "\n\n 1번쨰 줄\n2번째 줄\n3번째 줄", "anonymous"));
+      noteService.create(new Note(3L, "sally 이 다했어 " + i + "\n\n 1번쨰 줄\n2번째 줄\n3번째 줄", "sally"));
     }
   }
 }
