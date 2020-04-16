@@ -20,3 +20,4 @@ let addTaskNotification = Notification.Name("addTaskNotification")
 let editTaskNotification = Notification.Name("editTaskNotification")
 let configureColumnNotification = Notification.Name("configureColumnNotification")
 let columnInfoKey = "column"
+let moveToDoneNotification = Notification.Name("moveToDoneNotification")

@@ -28,12 +28,16 @@ class ListViewController: UIViewController {
         configureTableView()
         request()
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(renewList),
+                                               selector: #selector(reloadList),
                                                name: addTaskNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(renewList),
+                                               selector: #selector(reloadList),
                                                name: editTaskNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadDoneList),
+                                               name: moveToDoneNotification,
                                                object: nil)
     }
     
@@ -60,11 +64,20 @@ class ListViewController: UIViewController {
         }
     }
     
-    @objc func renewList(_ notification: Notification) {
+    @objc func reloadList(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         let columnInfo = userInfo[columnInfoKey] as! Column
         guard columnInfo == column else { return }
         request(column: columnInfo) {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    @objc func reloadDoneList() {
+        guard column == .done else { return }
+        request(column: .done) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
