@@ -1,8 +1,6 @@
-package com.codesquad.todo.intercepter;
+package com.codesquad.todo.interceptor;
 
-import com.codesquad.todo.message.AuthMessages;
 import com.codesquad.todo.service.HistoryService;
-import com.codesquad.todo.util.TokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
@@ -26,7 +24,6 @@ public class Interceptor extends HandlerInterceptorAdapter {
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
       throws Exception
   {
-    log.debug("### preHandle userId : {}", TokenUtil.getUserId(request.getHeader(AuthMessages.HEADER_AUTH)));
     return super.preHandle(request, response, handler);
   }
 
@@ -42,10 +39,9 @@ public class Interceptor extends HandlerInterceptorAdapter {
       throws Exception
   {
     if (ObjectUtils.isEmpty(ex)) {
-      log.debug("### afterCompletion userId : {}", TokenUtil.getUserId(request.getHeader(AuthMessages.HEADER_AUTH)));
-      log.debug("### afterCompletion : {}", request.getAttribute("body"));
       historyService.create(request);
     }
+
     super.afterCompletion(request, response, handler, ex);
   }
 }

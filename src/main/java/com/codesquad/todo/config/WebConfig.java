@@ -1,6 +1,6 @@
 package com.codesquad.todo.config;
 
-import com.codesquad.todo.intercepter.Interceptor;
+import com.codesquad.todo.interceptor.Interceptor;
 import com.codesquad.todo.service.HistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.*;
 public class WebConfig implements WebMvcConfigurer {
 
   @Autowired
-  HistoryService historyService;
+  private HistoryService historyService;
 
   @Override
   public void addCorsMappings(CorsRegistry registry) {

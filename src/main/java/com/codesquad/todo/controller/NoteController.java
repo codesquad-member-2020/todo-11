@@ -24,7 +24,7 @@ import javax.validation.Valid;
 public class NoteController {
 
   @Autowired
-  NoteService noteService;
+  private NoteService noteService;
 
   @ApiOperation(value = "", notes = "Create note")
   @PostMapping

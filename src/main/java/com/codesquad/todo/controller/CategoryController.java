@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 public class CategoryController {
 
   @Autowired
-  CategoryService categoryService;
+  private CategoryService categoryService;
 
   @ApiOperation(value = "", notes = "Get all category (not deleted)")
   @GetMapping
