@@ -10,13 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
 @Service
 @Transactional
-public class DevService {
+public class DevService extends BasicService {
 
   private final NoteRepository noteRepository;
   private final CategoryRepository categoryRepository;
@@ -32,25 +31,16 @@ public class DevService {
     this.noteService = noteService;
   }
 
-  public Map<String, Object> getAllNote() {
-    Map<String, Object> result = new HashMap<>();
-    result.put("notes", noteRepository.findAll());
-
-    return result;
+  public Map<String, ?> getAllNote() {
+    return getResultMap("notes", noteRepository.findAll());
   }
 
-  public Map<String, Object> getAllCategory() {
-    Map<String, Object> result = new HashMap<>();
-    result.put("category", categoryRepository.findAll());
-
-    return result;
+  public Map<String, ?> getAllCategory() {
+    return getResultMap("category", categoryRepository.findAll());
   }
 
-  public Map<String, Object> getAllHistory() {
-    Map<String, Object> result = new HashMap<>();
-    result.put("history", historyRepository.findAll());
-
-    return result;
+  public Map<String, ?> getAllHistory() {
+    return getResultMap("history", historyRepository.findAll());
   }
 
   public boolean verifyToken(String token) {
