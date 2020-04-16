@@ -16,45 +16,34 @@ import java.util.NoSuchElementException;
 @Slf4j
 @Service
 @Transactional
-public class NoteService {
+public class NoteService extends BasicService {
 
   @Autowired
   private NoteRepository noteRepository;
 
-  public Map<String, Object> create(Note note) {
-    Map<String, Object> result = new HashMap<>();
+  public Map<String, ?> create(Note note) {
     long rank = noteRepository.getRankByCategory(note.getCategoryId()).orElse(0L);
     note.setRank(rank + 1L);
-    result.put("note", noteRepository.save(note));
 
-    return result;
+    return getResultMap("note", noteRepository.save(note));
   }
 
-  public Map<String, Object> delete(Long id) {
+  public Map<String, ?> delete(Long id) {
     Note findNote = findById(id);
     findNote.delete();
 
-    Map<String, Object> result = new HashMap<>();
-    result.put("note", noteRepository.save(findNote));
-
-    return result;
+    return getResultMap("note", noteRepository.save(findNote));
   }
 
-  public Map<String, Object> getSpecificCategory(int categoryId, String user) {
-    Map<String, Object> result = new HashMap<>();
-    result.put("notes", noteRepository.findAllByCategoryAndDeletedFalse(categoryId, user));
-
-    return result;
+  public Map<String, ?> getSpecificCategory(int categoryId, String user) {
+    return getResultMap("notes", noteRepository.findAllByCategoryAndDeletedFalse(categoryId, user));
   }
 
-  public Map<String, Object> patch(Note note) {
+  public Map<String, ?> patch(Note note) {
     Note findNote = findById(note.getId());
     findNote.patch(note);
 
-    Map<String, Object> result = new HashMap<>();
-    result.put("note", noteRepository.save(findNote));
-
-    return result;
+    return getResultMap("note", noteRepository.save(findNote));
   }
 
   public Map<String, Object> move(Note note) {
@@ -72,10 +61,7 @@ public class NoteService {
 
     findNote.patch(note);
 
-    Map<String, Object> result = new HashMap<>();
-    result.put("note", noteRepository.save(findNote));
-
-    return result;
+    return getResultMap("note", noteRepository.save(findNote));
   }
 
   private Note findById(Long id) {

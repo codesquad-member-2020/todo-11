@@ -11,7 +11,7 @@ import java.util.Map;
 public class CategoryService extends BasicService {
 
   @Autowired
-  CategoryRepository categoryRepository;
+  private CategoryRepository categoryRepository;
 
   public Map<String, ?> getAll() {
     return getResultMap("category", categoryRepository.findAll());
