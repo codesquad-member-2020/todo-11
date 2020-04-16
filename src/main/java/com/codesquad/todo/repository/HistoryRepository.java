@@ -12,6 +12,7 @@ public interface HistoryRepository extends CrudRepository<History, Long> {
 
   @Query("SELECT t.id, t.user, t.method, t.uri, t.param, t.created_at " +
          "FROM history t " +
-         "WHERE user = :userId")
+         "WHERE user = :userId " +
+         "ORDER BY t.created_at DESC")
   List<History> findAllByUserId(String userId);
 }

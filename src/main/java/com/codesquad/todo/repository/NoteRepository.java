@@ -5,6 +5,7 @@ import org.springframework.data.jdbc.repository.query.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface NoteRepository extends CrudRepository<Note, Long> {
 
@@ -36,12 +37,12 @@ public interface NoteRepository extends CrudRepository<Note, Long> {
          "FROM note t " +
          "WHERE t.category_id = :categoryId " +
          "  AND t.rank >= :rank " +
-         "  AND t.id != 9 " +
+         "  AND t.id != :id " +
          "ORDER BY t.rank DESC")
-  List<Note> findAllByCategoryAndRankAfterOrderByRankDesc(long categoryId, long rank);
+  List<Note> findAllByCategoryAndRankAfterOrderByRankDescExceptId(long categoryId, long rank, long id);
 
   @Query("SELECT max(t.rank) " +
          "FROM note t " +
          "WHERE t.category_id = :categoryId")
-  long getRankByCategory(long categoryId);
+  Optional<Long> getRankByCategory(long categoryId);
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -22,7 +23,8 @@ public class NoteService {
 
   public Map<String, Object> create(Note note) {
     Map<String, Object> result = new HashMap<>();
-    note.setRank(noteRepository.getRankByCategory(note.getCategoryId()) + 1);
+    long rank = noteRepository.getRankByCategory(note.getCategoryId()).orElse(0L);
+    note.setRank(rank + 1L);
     result.put("note", noteRepository.save(note));
 
     return result;
@@ -57,6 +59,17 @@ public class NoteService {
 
   public Map<String, Object> move(Note note) {
     Note findNote = findById(note.getId());
+    List<Note> findNotes
+        = noteRepository.findAllByCategoryAndRankAfterOrderByRankDescExceptId(findNote.getCategoryId(),
+                                                                              note.getRank(),
+                                                                              findNote.getId());
+
+    for (Note n : findNotes) {
+      log.debug("### n : {}", n);
+      n.setRank(n.getRank() + 1L);
+      noteRepository.save(n);
+    }
+
     findNote.patch(note);
 
     Map<String, Object> result = new HashMap<>();

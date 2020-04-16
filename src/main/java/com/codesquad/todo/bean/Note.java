@@ -47,6 +47,17 @@ public class Note implements Serializable {
 
   private long rank;
 
+  public Note() {
+  }
+
+  public Note(@NotNull Long categoryId, @NotBlank String content,
+              @NotBlank String user)
+  {
+    this.categoryId = categoryId;
+    this.content = content;
+    this.user = user;
+  }
+
   public void delete() {
     deleted = true;
   }
@@ -58,6 +69,10 @@ public class Note implements Serializable {
 
     if (!ObjectUtils.isEmpty(note.content)) {
       content = note.content;
+    }
+
+    if (!ObjectUtils.isEmpty(note.rank)) {
+      rank = note.rank;
     }
 
     updatedAt = LocalDateTime.now();
