@@ -18,7 +18,7 @@ import java.util.Map;
 public class HistoryService {
 
   @Autowired
-  HistoryRepository historyRepository;
+  private HistoryRepository historyRepository;
 
   public void create(HttpServletRequest request) {
     log.debug("### history create : {}", request.toString());

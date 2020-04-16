@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
   @Autowired
-  AuthService authService;
+  private AuthService authService;
 
   @ApiOperation(value = "", notes = "Get JWT token")
   @GetMapping

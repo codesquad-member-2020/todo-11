@@ -19,7 +19,7 @@ import java.util.NoSuchElementException;
 public class NoteService {
 
   @Autowired
-  NoteRepository noteRepository;
+  private NoteRepository noteRepository;
 
   public Map<String, Object> create(Note note) {
     Map<String, Object> result = new HashMap<>();
