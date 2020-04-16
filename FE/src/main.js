@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   // addBtnEventHandler();
   // addContent();
 
-  getElement('.column-menu_addBtn').addEventListener('click', () => {
+  getElement('.category-menu_addBtn').addEventListener('click', () => {
     const addNote = getElement('.add-note');
     const addNoteDisplay = addNote.style.display;
     switch (addNoteDisplay) {
@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
   })
 
-  // eventListner를 forEach로 돌면서 column 마다 달아줘야지
+  // eventListner를 forEach로 돌면서 category 마다 달아줘야지
   let inputBox = getElement('.add-note_input');
   inputBox.addEventListener('keydown', () => {
     if (inputBox.innerHTML) inputBox.closest('.add-note_addBtn').disabled = "false";

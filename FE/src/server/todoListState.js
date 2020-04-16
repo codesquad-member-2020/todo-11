@@ -1,32 +1,32 @@
 import { URL } from '../constants/url.js';
-import { drawColumnSection } from '../../templates/column.js'
+import { drawCategorySection } from '../../templates/category.js'
 import { drawNoteSection } from '../../templates/note.js';
 
 export const todoListRender = async () => {
-  const columnState = await fetchJSON_GET(URL.PROD.GET_CATEGORY_API);
-  drawColumnSection(columnState);
+  const categoryState = await fetchJSON_GET(URL.PROD.GET_CATEGORY_API);
+  drawCategorySection(categoryState);
 
-  columnState.contents.category.forEach(async (column) => {
-    const noteState = await fetchJSON_GET(URL.PROD.GET_SPECIFIC_CATEGORY_NOTE_API + column.id);
-    drawNoteSection(noteState, column);
+  categoryState.contents.category.forEach(async (category) => {
+    const noteState = await fetchJSON_GET(URL.PROD.GET_SPECIFIC_CATEGORY_NOTE_API + category.id);
+    drawNoteSection(noteState, category);
   });
 }
 
 // export const todoListRender = async () => {
-//   const columnState = columnRender();
-//   noteRender(columnState);
+//   const categoryState = categoryRender();
+//   noteRender(categoryState);
 // }
 
-// const columnRender = async () => {
-//   const columnState = await fetchJSON_GET(URL.DEV.GET_COLUMNS_API);
-//   drawColumnSection(columnState);
-//   return columnState;
+// const categoryRender = async () => {
+//   const categoryState = await fetchJSON_GET(URL.DEV.GET_COLUMNS_API);
+//   drawCategorySection(categoryState);
+//   return categoryState;
 // }
 
-// const noteRender = async (columnState) => {
-//   columnState.contents.columns.forEach(async (column) => {
-//     const noteState = await fetchJSON_GET(URL.DEV.GET_SPECIFIC_COLUMN_NOTES_API + column);
-//     drawNoteSection(noteState, column);
+// const noteRender = async (categoryState) => {
+//   categoryState.contents.categorys.forEach(async (category) => {
+//     const noteState = await fetchJSON_GET(URL.DEV.GET_SPECIFIC_COLUMN_NOTES_API + category);
+//     drawNoteSection(noteState, category);
 //   });
 // }
 
