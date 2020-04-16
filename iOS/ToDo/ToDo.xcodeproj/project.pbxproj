@@ -20,11 +20,17 @@
 		786721BD243CAC2C003441CC /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786721BC243CAC2C003441CC /* ListViewController.swift */; };
 		786721C0243CAD3B003441CC /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786721BE243CAD3B003441CC /* ListTableViewCell.swift */; };
 		786721C1243CAD3B003441CC /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 786721BF243CAD3B003441CC /* ListTableViewCell.xib */; };
-		786721C3243CAEF9003441CC /* ListTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786721C2243CAEF9003441CC /* ListTableViewDataSource.swift */; };
+		786721C3243CAEF9003441CC /* ListViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786721C2243CAEF9003441CC /* ListViewController+DataSource.swift */; };
 		786721C5243CAF31003441CC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786721C4243CAF31003441CC /* Constants.swift */; };
 		786721C9243CE4B4003441CC /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786721C8243CE4B4003441CC /* EditorViewController.swift */; };
 		78A65F08243DD0EE0011D7B2 /* TaskInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A65F07243DD0EE0011D7B2 /* TaskInformation.swift */; };
 		78A65F0A243DEA670011D7B2 /* TaskInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A65F09243DEA670011D7B2 /* TaskInformationManager.swift */; };
+		78B7146D2446D88D00B120DD /* ActivitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7146B2446D88D00B120DD /* ActivitiesTableViewCell.swift */; };
+		78B7146E2446D88D00B120DD /* ActivitiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78B7146C2446D88D00B120DD /* ActivitiesTableViewCell.xib */; };
+		78B714702446D9BF00B120DD /* ActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B7146F2446D9BF00B120DD /* ActivitiesViewController.swift */; };
+		78B714742446DFEB00B120DD /* ActivityInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B714732446DFEB00B120DD /* ActivityInformation.swift */; };
+		78B714782446E45700B120DD /* ActivityInformationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B714772446E45700B120DD /* ActivityInformationManager.swift */; };
+		78CAF44C244568C8002FAB93 /* ListViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CAF44B244568C8002FAB93 /* ListViewController+Delegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,11 +49,17 @@
 		786721BC243CAC2C003441CC /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		786721BE243CAD3B003441CC /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		786721BF243CAD3B003441CC /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
-		786721C2243CAEF9003441CC /* ListTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewDataSource.swift; sourceTree = "<group>"; };
+		786721C2243CAEF9003441CC /* ListViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+DataSource.swift"; sourceTree = "<group>"; };
 		786721C4243CAF31003441CC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		786721C8243CE4B4003441CC /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		78A65F07243DD0EE0011D7B2 /* TaskInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInformation.swift; sourceTree = "<group>"; };
 		78A65F09243DEA670011D7B2 /* TaskInformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskInformationManager.swift; sourceTree = "<group>"; };
+		78B7146B2446D88D00B120DD /* ActivitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesTableViewCell.swift; sourceTree = "<group>"; };
+		78B7146C2446D88D00B120DD /* ActivitiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivitiesTableViewCell.xib; sourceTree = "<group>"; };
+		78B7146F2446D9BF00B120DD /* ActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesViewController.swift; sourceTree = "<group>"; };
+		78B714732446DFEB00B120DD /* ActivityInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityInformation.swift; sourceTree = "<group>"; };
+		78B714772446E45700B120DD /* ActivityInformationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityInformationManager.swift; sourceTree = "<group>"; };
+		78CAF44B244568C8002FAB93 /* ListViewController+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListViewController+Delegate.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +113,8 @@
 				78143A83243F4F5E000DE8CD /* ColumnInformationManager.swift */,
 				78A65F07243DD0EE0011D7B2 /* TaskInformation.swift */,
 				78A65F09243DEA670011D7B2 /* TaskInformationManager.swift */,
+				78B714732446DFEB00B120DD /* ActivityInformation.swift */,
+				78B714772446E45700B120DD /* ActivityInformationManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -110,6 +124,8 @@
 			children = (
 				786721BE243CAD3B003441CC /* ListTableViewCell.swift */,
 				786721BF243CAD3B003441CC /* ListTableViewCell.xib */,
+				78B7146B2446D88D00B120DD /* ActivitiesTableViewCell.swift */,
+				78B7146C2446D88D00B120DD /* ActivitiesTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -119,10 +135,12 @@
 			children = (
 				786721BA243CAC06003441CC /* MainViewController.swift */,
 				786721BC243CAC2C003441CC /* ListViewController.swift */,
-				786721C2243CAEF9003441CC /* ListTableViewDataSource.swift */,
+				786721C2243CAEF9003441CC /* ListViewController+DataSource.swift */,
+				78CAF44B244568C8002FAB93 /* ListViewController+Delegate.swift */,
 				786721C8243CE4B4003441CC /* EditorViewController.swift */,
 				781C2AC5244229B800EED845 /* EditorTextFieldDelegate.swift */,
 				781C2AC72442300500EED845 /* EditorTextViewDelegate.swift */,
+				78B7146F2446D9BF00B120DD /* ActivitiesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -189,6 +207,7 @@
 				786721C1243CAD3B003441CC /* ListTableViewCell.xib in Resources */,
 				783C61DF243C7226005E6097 /* Assets.xcassets in Resources */,
 				783C61DD243C7226005E6097 /* Main.storyboard in Resources */,
+				78B7146E2446D88D00B120DD /* ActivitiesTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,18 +218,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B7146D2446D88D00B120DD /* ActivitiesTableViewCell.swift in Sources */,
 				78143A84243F4F5E000DE8CD /* ColumnInformationManager.swift in Sources */,
-				786721C3243CAEF9003441CC /* ListTableViewDataSource.swift in Sources */,
+				786721C3243CAEF9003441CC /* ListViewController+DataSource.swift in Sources */,
+				78B714742446DFEB00B120DD /* ActivityInformation.swift in Sources */,
 				781C2AC6244229B800EED845 /* EditorTextFieldDelegate.swift in Sources */,
 				781C2AC82442300500EED845 /* EditorTextViewDelegate.swift in Sources */,
+				78B714702446D9BF00B120DD /* ActivitiesViewController.swift in Sources */,
 				786721BB243CAC06003441CC /* MainViewController.swift in Sources */,
 				783C61D6243C7226005E6097 /* AppDelegate.swift in Sources */,
 				78A65F0A243DEA670011D7B2 /* TaskInformationManager.swift in Sources */,
 				786721C9243CE4B4003441CC /* EditorViewController.swift in Sources */,
+				78B714782446E45700B120DD /* ActivityInformationManager.swift in Sources */,
 				786721BD243CAC2C003441CC /* ListViewController.swift in Sources */,
 				786721C5243CAF31003441CC /* Constants.swift in Sources */,
 				783C61D8243C7226005E6097 /* SceneDelegate.swift in Sources */,
 				78A65F08243DD0EE0011D7B2 /* TaskInformation.swift in Sources */,
+				78CAF44C244568C8002FAB93 /* ListViewController+Delegate.swift in Sources */,
 				786721C0243CAD3B003441CC /* ListTableViewCell.swift in Sources */,
 				78143A80243F4E0F000DE8CD /* ColumnInformation.swift in Sources */,
 			);

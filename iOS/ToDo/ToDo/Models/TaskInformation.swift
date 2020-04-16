@@ -28,11 +28,12 @@ struct Tasks: Codable {
 struct Task: Codable {
     
     let identifier: Int
-    let content: String
+    var content: String
     let createdDate: String
     let updatedDate: String
     let user: String
     let deleted: Bool
+    let rank: Int
     
     enum CodingKeys: String, CodingKey {
         case identifier = "id"
@@ -41,6 +42,7 @@ struct Task: Codable {
         case updatedDate = "updatedAt"
         case user
         case deleted
+        case rank
     }
     
 }
