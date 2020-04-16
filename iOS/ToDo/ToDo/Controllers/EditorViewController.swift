@@ -29,8 +29,11 @@ class EditorViewController: UIViewController {
     
     func addTask() {
         guard let column = column else { return }
-        guard let content = titleTextField.text else { return }
-        taskInformationManager.addTask(column: column, content: content) {
+        guard let title = titleTextField.text else { return }
+        let content = contentTextView.text ?? ""
+        let data = "\(title)\n\n\(content)"
+        print(data)
+        taskInformationManager.addTask(column: column, data: data) {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: addTaskNotification,
                                                 object: nil,

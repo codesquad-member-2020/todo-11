@@ -28,7 +28,7 @@ class TaskInformationManager {
         dataTask.resume()
     }
     
-    func addTask(column: Column, content: String, _ completion: @escaping () -> ()) {
+    func addTask(column: Column, data: String, _ completion: @escaping () -> ()) {
         guard let url = URL(string: "http://15.165.223.140:80/api/notes") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -36,7 +36,7 @@ class TaskInformationManager {
         let body = """
             {
                 "categoryId": \(column),
-                "content": "\(content)",
+                "content": "\(data)",
                 "user": "anonymous"
             }
         """.data(using: .utf8)

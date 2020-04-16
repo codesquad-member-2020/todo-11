@@ -42,10 +42,11 @@ class ListViewController: UIViewController {
     }
     
     func configureHeader() {
+        guard let column = column else { return }
+        let titles: [Column : String] = [.toDo: "To do", .inProgress: "In progress", .done: "Done"]
+        titleLabel.text = titles[column]
         badgeLabel.layer.cornerRadius = 12
         badgeLabel.layer.masksToBounds = true
-        guard let column = self.column else { return }
-        titleLabel.text = "\(column)"
     }
     
     func configureTableView() {

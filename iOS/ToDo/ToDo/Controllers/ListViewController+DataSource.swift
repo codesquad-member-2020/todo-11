@@ -16,7 +16,11 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: listTableViewCell, for: indexPath) as! ListTableViewCell
-        cell.titleLabel.text = taskInformationManager.tasks?[indexPath.row].content
+        if let content = taskInformationManager.tasks?[indexPath.row].content {
+            let lines = content.components(separatedBy: "\n\n")
+            cell.titleLabel.text = lines.first
+            cell.contentLabel.text = lines.last
+        }
         return cell
     }
     
