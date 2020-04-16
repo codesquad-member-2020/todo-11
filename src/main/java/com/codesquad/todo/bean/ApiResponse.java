@@ -7,9 +7,9 @@ import java.util.Map;
 @Data
 public class ApiResponse {
   private String message;
-  private Map<String, Object> contents;
+  private Map<String, ?> contents;
 
-  public ApiResponse(String message, Map<String, Object> contents) {
+  public ApiResponse(String message, Map<String, ?> contents) {
     this.message = message;
     this.contents = contents;
   }

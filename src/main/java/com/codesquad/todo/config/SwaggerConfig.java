@@ -24,7 +24,7 @@ public class SwaggerConfig {
     return new ApiInfoBuilder()
         .title("Todo-11")
         .description("Todo-11 Api made by Dan")
-        .version("0.0.1")
+        .version("1.0.0")
         .build();
   }
 
