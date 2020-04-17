@@ -27,34 +27,6 @@ class EditorViewController: UIViewController {
         }
     }
     
-    func addTask() {
-        guard let column = column else { return }
-        guard let content = titleTextField.text else { return }
-        taskInformationManager.addTask(column: column, content: content) {
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: addTaskNotification,
-                                                object: nil,
-                                                userInfo: [columnInfoKey: column])
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
-    }
-    
-    func editTask() {
-        guard let column = column else { return }
-        guard var task = task else { return }
-        guard let text = titleTextField.text else { return }
-        task.content = text
-        taskInformationManager.editTask(column: column, task: task) {
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: editTaskNotification,
-                                                object: nil,
-                                                userInfo: [columnInfoKey: column])
-                self.dismiss(animated: true, completion: nil)
-            }
-        }
-    }
-    
     @IBAction func touchUpCancelButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -75,15 +47,19 @@ class EditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if mode == .add {
-            configureTitleTextField()
-            configureContentTextView()
-        } else if mode == .edit {
+            configureAddModeView()
+        } else {
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(configureColumn),
                                                    name: configureColumnNotification,
                                                    object: nil)
-            titleTextField.text = task?.content
+            configureEditModeView()
         }
+    }
+    
+    func configureAddModeView() {
+        configureTitleTextField()
+        configureContentTextView()
     }
     
     func configureTitleTextField() {
@@ -100,10 +76,53 @@ class EditorViewController: UIViewController {
         contentTextView.textColor = .lightGray
     }
     
+    func configureEditModeView() {
+        confirmButton.isEnabled = true
+        confirmButton.setTitleColor(.systemBlue, for: .normal)
+        guard let task = task else { return }
+        let lines = task.content.components(separatedBy: "\n\n")
+        titleTextField.text = lines.first
+        contentTextView.text = lines.last
+    }
+    
     @objc func configureColumn(_ notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
         let columnInfo = userInfo[columnInfoKey] as! Column
         column = columnInfo
+    }
+    
+    func addTask() {
+        guard let column = column else { return }
+        guard let title = titleTextField.text else { return }
+        let text = contentTextView.text!
+        let content = text != "Content" ? text : ""
+        let data = "\(title)\n\n\(content)"
+        taskInformationManager.addTask(column: column, data: data) {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: addTaskNotification,
+                                                object: nil,
+                                                userInfo: [columnInfoKey: column])
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func editTask() {
+        guard let column = column else { return }
+        guard let task = task else { return }
+        guard let title = titleTextField.text else { return }
+        let text = contentTextView.text!
+        let content = text != "Content" ? text : ""
+        let data = "\(title)\n\n\(content)"
+        let identifier = task.identifier
+        taskInformationManager.editTask(column: column, data: data, identifier: identifier) {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: editTaskNotification,
+                                                object: nil,
+                                                userInfo: [columnInfoKey: column])
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
 
 }

@@ -32,20 +32,25 @@ class ListViewController: UIViewController {
                                                name: addTaskNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadDoneList),
+                                               name: moveToDoneNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
                                                selector: #selector(reloadList),
                                                name: editTaskNotification,
                                                object: nil)
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(reloadDoneList),
-                                               name: moveToDoneNotification,
+                                               selector: #selector(changeBadge),
+                                               name: deleteTaskNotification,
                                                object: nil)
     }
     
     func configureHeader() {
+        guard let column = column else { return }
+        let titles: [Column : String] = [.toDo: "To do", .inProgress: "In progress", .done: "Done"]
+        titleLabel.text = titles[column]
         badgeLabel.layer.cornerRadius = 12
         badgeLabel.layer.masksToBounds = true
-        guard let column = self.column else { return }
-        titleLabel.text = "\(column)"
     }
     
     func configureTableView() {
@@ -71,6 +76,7 @@ class ListViewController: UIViewController {
         request(column: columnInfo) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.badgeLabel.text = "\(self.taskInformationManager.tasksCount ?? 0)"
             }
         }
     }
@@ -80,8 +86,13 @@ class ListViewController: UIViewController {
         request(column: .done) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.changeBadge()
             }
         }
+    }
+    
+    @objc func changeBadge() {
+        self.badgeLabel.text = "\(self.taskInformationManager.tasksCount ?? 0)"
     }
 
 }

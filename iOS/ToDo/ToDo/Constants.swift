@@ -13,11 +13,13 @@ let inProgressSegue = "inProgressSegue"
 let doneSegue = "doneSegue"
 let addTaskSegue = "addTaskSegue"
 let editTaskSegue = "editTaskSegue"
+
 let listTableViewCell = "listTableViewCell"
 let activitiesTableViewCell = "activitiesTableViewCell"
 
 let addTaskNotification = Notification.Name("addTaskNotification")
+let moveToDoneNotification = Notification.Name("moveToDoneNotification")
 let editTaskNotification = Notification.Name("editTaskNotification")
+let deleteTaskNotification = Notification.Name("deleteTaskNotification")
 let configureColumnNotification = Notification.Name("configureColumnNotification")
 let columnInfoKey = "column"
-let moveToDoneNotification = Notification.Name("moveToDoneNotification")

@@ -20,6 +20,7 @@ extension ListViewController: UITableViewDelegate {
                     self.request(column: column) {
                         DispatchQueue.main.async {
                             self.tableView.reloadData()
+                            self.changeBadge()
                             NotificationCenter.default.post(name: moveToDoneNotification, object: nil)
                         }
                     }
@@ -38,6 +39,7 @@ extension ListViewController: UITableViewDelegate {
                 self.taskInformationManager.tasks?.remove(at: indexPath.row)
                 self.taskInformationManager.tasksCount! -= 1
                 tableView.deleteRows(at: [indexPath], with: .fade)
+                NotificationCenter.default.post(name: deleteTaskNotification, object: nil)
             }
             return UIMenu(title: "", children: [moveToDone, edit, delete])
         }
