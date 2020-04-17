@@ -1,10 +1,15 @@
 import { css } from '../css/style.css';
 import { getElement, show, hide } from './util/dom.js';
-import { todoListRender } from './server/todoListState.js'
+import { todoListRender, login, history } from './server/todoListState.js'
+// import { JWT_TOKEN } from '../src/constants/url.js';
 // import { addBtnEventHandler, addContent } from './eventController/addEvent.js'
 
-window.addEventListener('DOMContentLoaded', () => {
-  todoListRender();
+window.addEventListener('DOMContentLoaded', async () => {
+  await todoListRender();
+  await login();
+  await history();
+  // JWT_TOKEN = await login().contents.loginToken;
+  // await todoListRender();
 
   // addBtnEventHandler();
   // addContent();

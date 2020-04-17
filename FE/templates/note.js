@@ -1,12 +1,10 @@
-import { getElement } from '../src/util/dom.js'
-
-const stateRender = (noteState) => {
+export const drawNoteSection = (noteState) => {
     let noteHTML = '';
 
     noteState.contents.notes.forEach((note) => {
         const noteContents = note.content.split('\n');
         const noteTitle = noteContents[0];
-        if(noteContents[1] === '') noteContents.splice(0, 1);
+        if (noteContents[1] === '') noteContents.splice(0, 1);
         noteContents.splice(0, 1);
         let noteContentsHTML = '';
         noteContents.forEach((content) => {
@@ -14,7 +12,7 @@ const stateRender = (noteState) => {
         })
 
         noteHTML += `
-            <div class="note" value="${note.id}">
+            <div class="note" id="${note.id}">
                 <span class="note-icon"><i class="far fa-comment-alt"></i></span>
                 <span class="note-main">
                     <div class="note-title">${noteTitle}</div>
@@ -30,9 +28,4 @@ const stateRender = (noteState) => {
     })
 
     return noteHTML;
-}
-
-export const drawNoteSection = (noteState, category) => {
-    getElement(`.${category.name} > .note-wrap`).innerHTML = stateRender(noteState);
-    // getElement(`.${category.name} > .category-menu_count`).innerText = 'noteState.contents.notes.length';
 }

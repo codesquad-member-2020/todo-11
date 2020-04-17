@@ -1,5 +1,7 @@
 import { URL } from '../constants/url.js';
-import { drawCategorySection, inputBoxEventHandle } from '../../templates/category.js';
+import { drawCategorySection } from '../../templates/category.js';
+import { drawHistory } from '../../templates/history.js';
+import { getElement, hasClass, addClass, removeClass } from '../util/dom.js';
 // import { drawNoteSection } from '../../templates/note.js';
 // import { getElement } from '../util/dom.js';
 
@@ -31,13 +33,40 @@ import { drawCategorySection, inputBoxEventHandle } from '../../templates/catego
 //   })
 // }
 
+let JWT_TOKEN = '';
+
 export const todoListRender = async () => {
-    const categoryState = await fetchJSON_GET(URL.PROD.GET_CATEGORY_API)
-    await categoryState.contents.category.forEach(async (category) => {
-        const noteState = await fetchJSON_GET(URL.PROD.GET_SPECIFIC_CATEGORY_NOTE_API + category.id);
-        await drawCategorySection(category, noteState, inputBoxEventHandle);
-    })
-  }
+  getElement('.category-wrap').innerHTML = '';
+  const categoryState = await fetchJSON_GET(URL.PROD.GET_CATEGORY_API)
+  await categoryState.contents.category.forEach(async (category) => {
+    const noteState = await fetchJSON_GET(URL.PROD.GET_SPECIFIC_CATEGORY_NOTE_API + category.id);
+    await drawCategorySection(category, noteState);
+  })
+}
+
+export const login = () => {
+  getElement('.login').addEventListener('click', async () => {
+    const userId = getElement('.login-id').value;
+    if (userId === "") return;
+    let res = await fetchJSON_GET(URL.PROD.GET_JWT_TOKEN + userId);
+    JWT_TOKEN = await res.contents.loginToken;
+    await todoListRender();
+  })
+}
+
+export const history = () => {
+  getElement('.menu').addEventListener('click', async () => {
+    const historyMenu = getElement('.history');
+    if (hasClass(historyMenu, 'visible')) removeClass(historyMenu, 'visible');
+    else addClass(historyMenu, 'visible');
+    const history = await fetchJSON_GET(URL.PROD.GET_HISTORY);
+    await drawHistory(history);
+  })
+}
+
+// export const removeNote = async (noteIndex) => {
+//   await fetchJSON_DELETE(URL.DEV.DELETE_NOTE_API + noteIndex);
+// }
 
 // export const todoListRender = async () => {
 //   const categoryState = categoryRender();
@@ -61,14 +90,14 @@ export const todoListRender = async () => {
 //   await fetchJSON_POST(URL.DEV.CREATE_NOTE_API, noteContent);
 // }
 
-// export const removeNote = async (noteIndex) => {
-//   await fetchJSON_DELETE(URL.DEV.DELETE_NOTE_API + noteIndex);
-// }
 
 const fetchJSON_GET = (url) => {
   return fetch(url, {
     method: 'GET',
-    headers: { "Accept": "*/*" }
+    headers: {
+      "Accept": "*/*",
+      "Authorization": JWT_TOKEN
+    }
   }).then(response => {
     return response.json();
   });
@@ -77,7 +106,10 @@ const fetchJSON_GET = (url) => {
 const fetchJSON_POST = (url, noteContent) => {
   return fetch(url, {
     method: 'POST',
-    headers: { "Accept": "*/*" },
+    headers: {
+      "Accept": "*/*",
+      "Authorization": JWT_TOKEN
+    },
     body: noteContent
   }).then(response => {
     return response.json();
@@ -87,7 +119,10 @@ const fetchJSON_POST = (url, noteContent) => {
 const fetchJSON_DELETE = (url) => {
   return fetch(url, {
     method: 'DELETE',
-    headers: { "Accept": "*/*" },
+    headers: {
+      "Accept": "*/*",
+      "Authorization": JWT_TOKEN
+    },
   }).then(response => {
     return response.json();
   });
