@@ -1,22 +1,22 @@
-import { getElement } from '../src/util/dom.js'
-
-const stateRender = (noteState) => {
+export const drawNoteSection = (noteState) => {
     let noteHTML = '';
 
-    noteState.contents.notes.forEach((note, column) => {
-        // getElement(`.${column} > .column-menu_count`).innerHTML++;
-
+    noteState.contents.notes.forEach((note) => {
         const noteContents = note.content.split('\n');
         const noteTitle = noteContents[0];
+        if (noteContents[1] === '') noteContents.splice(0, 1);
         noteContents.splice(0, 1);
-        const noteContent = noteContents.join('');
+        let noteContentsHTML = '';
+        noteContents.forEach((content) => {
+            noteContentsHTML += `${content}<br>`;
+        })
 
         noteHTML += `
-            <div class="note" value="${note.id}">
+            <div class="note" id="${note.id}">
                 <span class="note-icon"><i class="far fa-comment-alt"></i></span>
                 <span class="note-main">
                     <div class="note-title">${noteTitle}</div>
-                    <div class="note-content">${noteContent}</div>
+                    <div class="note-content">${noteContentsHTML}</div>
                     <div class="note-author">
                         <span class="note-author_msg">Added by</span>
                         <span class="note-author_name">${note.user}</span>
@@ -28,9 +28,4 @@ const stateRender = (noteState) => {
     })
 
     return noteHTML;
-}
-
-export const drawNoteSection = (noteState, column) => {
-    getElement(`.${column.name} > .note-wrap`).innerHTML = stateRender(noteState, column);
-    getElement(`.${column.name} > .column-menu_count`).innerText = noteState.contents.notes.length;
 }
