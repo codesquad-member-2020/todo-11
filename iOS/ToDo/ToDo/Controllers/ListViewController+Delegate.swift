@@ -14,7 +14,6 @@ extension ListViewController: UITableViewDelegate {
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
             guard let tasks = self.taskInformationManager.tasks else { return nil }
             let identifier = tasks[indexPath.row].identifier
-            let rank = tasks.last!.rank
             let moveToDone = UIAction(title: "Move to Done", image: UIImage(systemName: "paperplane")) { _ in
                 guard let column = self.column else { return }
                 self.taskInformationManager.moveToDone(identifier: identifier) {
