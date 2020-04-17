@@ -3,8 +3,8 @@ import { getElement, show, hide } from './util/dom.js';
 import { todoListRender } from './server/todoListState.js'
 // import { addBtnEventHandler, addContent } from './eventController/addEvent.js'
 
-window.addEventListener('DOMContentLoaded', async () => {
-  await todoListRender();
+window.addEventListener('DOMContentLoaded', () => {
+  todoListRender();
 
   // addBtnEventHandler();
   // addContent();
