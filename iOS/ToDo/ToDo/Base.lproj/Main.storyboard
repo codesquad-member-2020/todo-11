@@ -132,8 +132,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5mx-tM-h88">
-                                <rect key="frame" x="625" y="24" width="63" height="30"/>
-                                <state key="normal" title="Add Task">
+                                <rect key="frame" x="633" y="24" width="55" height="30"/>
+                                <state key="normal" title="Confirm">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -141,18 +141,18 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x0F-Os-uoM">
-                                <rect key="frame" x="100" y="100" width="498.5" height="42"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
+                                <rect key="frame" x="100" y="100" width="498.5" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="textFieldEditingDidChange:" destination="s3w-fT-Y6j" eventType="editingChanged" id="YOa-yG-04N"/>
                                 </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Cjn-WR-tiv">
-                                <rect key="frame" x="100" y="150" width="498.5" height="556"/>
+                                <rect key="frame" x="100" y="160" width="498.5" height="556"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -166,7 +166,7 @@
                             <constraint firstItem="5mx-tM-h88" firstAttribute="top" secondItem="VhW-ft-gFL" secondAttribute="top" constant="24" id="Prp-Z6-NuY"/>
                             <constraint firstItem="Cjn-WR-tiv" firstAttribute="width" secondItem="XVf-CA-j0e" secondAttribute="width" multiplier="0.7" id="SFq-jG-WF4"/>
                             <constraint firstItem="x0F-Os-uoM" firstAttribute="leading" secondItem="VhW-ft-gFL" secondAttribute="leading" constant="100" id="bzy-4b-dWg"/>
-                            <constraint firstItem="Cjn-WR-tiv" firstAttribute="top" secondItem="VhW-ft-gFL" secondAttribute="top" constant="150" id="i05-8I-9a5"/>
+                            <constraint firstItem="Cjn-WR-tiv" firstAttribute="top" secondItem="VhW-ft-gFL" secondAttribute="top" constant="160" id="i05-8I-9a5"/>
                             <constraint firstItem="x0F-Os-uoM" firstAttribute="top" secondItem="VhW-ft-gFL" secondAttribute="top" constant="100" id="pvM-g8-TdE"/>
                             <constraint firstItem="VhW-ft-gFL" firstAttribute="trailing" secondItem="5mx-tM-h88" secondAttribute="trailing" constant="24" id="qrr-QT-HKi"/>
                         </constraints>

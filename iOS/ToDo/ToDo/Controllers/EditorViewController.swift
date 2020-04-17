@@ -47,19 +47,19 @@ class EditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if mode == .add {
-            configureTitleTextField()
-            configureContentTextView()
+            configureAddModeView()
         } else {
             NotificationCenter.default.addObserver(self,
                                                    selector: #selector(configureColumn),
                                                    name: configureColumnNotification,
                                                    object: nil)
-            confirmButton.isEnabled = true
-            guard let task = task else { return }
-            let lines = task.content.components(separatedBy: "\n\n")
-            titleTextField.text = lines.first
-            contentTextView.text = lines.last
+            configureEditModeView()
         }
+    }
+    
+    func configureAddModeView() {
+        configureTitleTextField()
+        configureContentTextView()
     }
     
     func configureTitleTextField() {
@@ -74,6 +74,15 @@ class EditorViewController: UIViewController {
         textViewDelegate.contentTextView = contentTextView
         contentTextView.text = "Content"
         contentTextView.textColor = .lightGray
+    }
+    
+    func configureEditModeView() {
+        confirmButton.isEnabled = true
+        confirmButton.setTitleColor(.systemBlue, for: .normal)
+        guard let task = task else { return }
+        let lines = task.content.components(separatedBy: "\n\n")
+        titleTextField.text = lines.first
+        contentTextView.text = lines.last
     }
     
     @objc func configureColumn(_ notification: Notification) {
