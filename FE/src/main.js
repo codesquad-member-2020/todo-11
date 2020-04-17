@@ -9,30 +9,36 @@ window.addEventListener('DOMContentLoaded', async () => {
   // addBtnEventHandler();
   // addContent();
 
-  getElement('.category-menu_addBtn').addEventListener('click', () => {
-    const addNote = getElement('.add-note');
-    const addNoteDisplay = addNote.style.display;
-    switch (addNoteDisplay) {
-      case 'block': hide(addNote);
-        break;
-      case "": show(addNote);
-        break;
-      case 'none': show(addNote);
-        break;
-    }
-  })
+  // getElement('.category-menu_addBtn').addEventListener('click', () => {
+  //   const addNote = getElement('.add-note');
+  //   const addNoteDisplay = addNote.style.display;
+  //   switch (addNoteDisplay) {
+  //     case 'block': hide(addNote);
+  //       break;
+  //     case "": show(addNote);
+  //       break;
+  //     case 'none': show(addNote);
+  //       break;
+  //   }
+  // })
 
-  // eventListner를 forEach로 돌면서 category 마다 달아줘야지
-  let inputBox = getElement('.add-note_input');
-  inputBox.addEventListener('keydown', () => {
-    if (inputBox.innerHTML) inputBox.closest('.add-note_addBtn').disabled = "false";
-    else inputBox.closest('.add-note_addBtn').disabled = "disabled";
-  })
+  // // eventListner를 forEach로 돌면서 category 마다 달아줘야지
+  // let inputBox = getElement('.add-note_input');
+  // inputBox.addEventListener('keydown', () => {
+  //   if (inputBox.innerHTML != null) {
+  //     console.log('here!');
+  //     inputBox.closest('.add-note_addBtn').disabled = "false";
+  //   }
+  //   else {
+  //     console.log('nooo');
+  //     inputBox.closest('.add-note_addBtn').disabled = "disabled";
+  //   }
+  // })
 
 
-  getElement('.add-note_addBtn').addEventListener('click', () => {
+  // getElement('.add-note_addBtn').addEventListener('click', () => {
 
-  })
+  // })
 
 
 });

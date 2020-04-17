@@ -32,6 +32,12 @@ body {
     padding: 10px;
     background-color: #F0F1F3;
     overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+.category::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
 }
 
 .category-menu {

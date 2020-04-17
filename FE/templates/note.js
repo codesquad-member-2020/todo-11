@@ -3,13 +3,11 @@ import { getElement } from '../src/util/dom.js'
 const stateRender = (noteState) => {
     let noteHTML = '';
 
-    noteState.contents.notes.forEach((note, category) => {
-        // getElement(`.${category} > .category-menu_count`).innerHTML++;
-
+    noteState.contents.notes.forEach((note) => {
         const noteContents = note.content.split('\n');
         const noteTitle = noteContents[0];
+        if(noteContents[1] === '') noteContents.splice(0, 1);
         noteContents.splice(0, 1);
-        //const noteContent = noteContents.join('');
         let noteContentsHTML = '';
         noteContents.forEach((content) => {
             noteContentsHTML += `${content}<br>`;
@@ -35,6 +33,6 @@ const stateRender = (noteState) => {
 }
 
 export const drawNoteSection = (noteState, category) => {
-    getElement(`.${category.name} > .note-wrap`).innerHTML = stateRender(noteState, category);
-    // getElement(`.${category.name} > .category-menu_count`).innerText = noteState.contents.notes.length;
+    getElement(`.${category.name} > .note-wrap`).innerHTML = stateRender(noteState);
+    // getElement(`.${category.name} > .category-menu_count`).innerText = 'noteState.contents.notes.length';
 }
