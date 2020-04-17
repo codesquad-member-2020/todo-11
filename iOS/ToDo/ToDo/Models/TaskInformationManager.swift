@@ -64,20 +64,15 @@ class TaskInformationManager {
         dataTask.resume()
     }
     
-    func editTask(column: Column, task: Task, _ completion: @escaping () -> ()) {
+    func editTask(column: Column, data: String, identifier: Int, _ completion: @escaping () -> ()) {
         guard let url = URL(string: "http://15.165.223.140:80/api/notes") else { return }
+        let encoder = JSONEncoder()
+        let editTaskInfo = EditTaskInfo(categoryId: column.rawValue, content: data, id: identifier, user: "anonymous")
+        let jsonData = try? encoder.encode(editTaskInfo)
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let body = """
-            {
-                "categoryId": \(column),
-                "content": "\(task.content)",
-                "id": \(task.identifier),
-                "user": "anonymous"
-            }
-        """.data(using: .utf8)
-        request.httpBody = body
+        request.httpBody = jsonData
         let session = URLSession(configuration: .default)
         let dataTask = session.dataTask(with: request) { (data, response, error) in
             completion()
@@ -120,6 +115,15 @@ struct AddTaskInfo: Codable {
     
     let categoryId: Int
     let content: String
+    let user: String
+    
+}
+
+struct EditTaskInfo: Codable {
+    
+    let categoryId: Int
+    let content: String
+    let id: Int
     let user: String
     
 }
