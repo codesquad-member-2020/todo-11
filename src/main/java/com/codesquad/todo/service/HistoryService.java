@@ -10,23 +10,35 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
 
 @Slf4j
 @Service
-public class HistoryService {
+public class HistoryService extends BasicService {
 
   @Autowired
-  HistoryRepository historyRepository;
+  private HistoryRepository historyRepository;
 
   public void create(HttpServletRequest request) {
-    log.debug("### history create : {}", request.toString());
-
     String userId = TokenUtil.getUserId(request.getHeader(AuthMessages.HEADER_AUTH));
     String method = request.getMethod();
     String uri = request.getRequestURI();
 
+    StringBuilder sb = new StringBuilder();
+    sb.append("{parameter: ").append(getParameter(request))
+        .append(", body: ").append(getBody(request))
+        .append("}");
+    String param = sb.toString();
+
+    History history = new History(userId, method, uri, param);
+    historyRepository.save(history);
+  }
+
+  public Map<String, ?> getAllByUser(String userId) {
+    return getResultMap("history", historyRepository.findAllByUserId(userId));
+  }
+
+  private String getParameter(HttpServletRequest request) {
     Enumeration params = request.getParameterNames();
     StringBuilder sb = new StringBuilder();
 
@@ -41,16 +53,10 @@ public class HistoryService {
 
     sb.insert(0, "{").append("}");
 
-    String param = sb.toString();
-
-    History history = new History(userId, method, uri, param);
-    historyRepository.save(history);
+    return sb.toString();
   }
 
-  public Map<String, Object> getAllByUser(String userId) {
-    Map<String, Object> result = new HashMap<>();
-    result.put("history", historyRepository.findAllByUserId(userId));
-
-    return result;
+  private String getBody(HttpServletRequest request) {
+    return "{" + request.getAttribute("body") + "}";
   }
 }

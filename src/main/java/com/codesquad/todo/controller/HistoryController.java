@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 public class HistoryController {
 
   @Autowired
-  HistoryService historyService;
+  private HistoryService historyService;
 
   @ApiOperation(value = "", notes = "Get all category (only login user)")
   @GetMapping
